@@ -1,0 +1,52 @@
+# GrACE evaluation suite configuration (Chunk 34, D257).
+#
+# All threshold values are seed defaults. They will be tuned after the
+# first production deployment captures empirical score distributions.
+#
+# Two-tier policy: CLI exits 0 unless any case breaches the fail_floor
+# for any metric. Warn-floor breaches are logged but do not fail CI.
+# Hallucination is interpreted as "lower is better" — warn_floor and
+# fail_floor are upper bounds.
+
+thresholds:
+  contextual_precision:
+    warn_floor: 0.80  # TUNE-AFTER-FIRST-DEPLOYMENT
+    fail_floor: 0.70  # TUNE-AFTER-FIRST-DEPLOYMENT
+  contextual_recall:
+    warn_floor: 0.80  # TUNE-AFTER-FIRST-DEPLOYMENT
+    fail_floor: 0.70  # TUNE-AFTER-FIRST-DEPLOYMENT
+  faithfulness:
+    warn_floor: 0.85  # TUNE-AFTER-FIRST-DEPLOYMENT
+    fail_floor: 0.75  # TUNE-AFTER-FIRST-DEPLOYMENT
+  answer_relevancy:
+    warn_floor: 0.80  # TUNE-AFTER-FIRST-DEPLOYMENT
+    fail_floor: 0.70  # TUNE-AFTER-FIRST-DEPLOYMENT
+  hallucination:
+    warn_floor: 0.15  # TUNE-AFTER-FIRST-DEPLOYMENT (max; lower is better)
+    fail_floor: 0.25  # TUNE-AFTER-FIRST-DEPLOYMENT (max; lower is better)
+
+judge:
+  # Phase-5 real-test: switched from local qwen2.5:7b to Anthropic Claude
+  # Haiku 4.5. Local 7B gave unstable scores under DeepEval's multi-criteria
+  # judging rubrics. Haiku is consistent. Uses LLM_API_KEY from .env.
+  provider: anthropic
+  model: claude-haiku-4-5-20251001
+  base_url: https://api.anthropic.com/v1/messages
+
+golden_dataset_dir: src/eval/golden_dataset
+
+mine_api:
+  timeout_seconds: 120
+
+per_case_timeout_seconds: 60
+
+# F-0035 / ISS-0026 deferral closure (2026-07-03): wall-clock cap for a
+# single CQ test run (src/ontology/cq_test_runner.py). Cancellation +
+# failure propagation removed the zombie-run class, but a hung LLM call
+# chain could still run unbounded. The runner self-checks elapsed time at
+# the same cooperative points as the cancel check (before each sequential
+# LLM call) — no scheduler, no watchdog thread (D246-safe). Exceeding the
+# cap marks the run `failed` with "wall_clock_cap_exceeded after Ns".
+# Set to 0 (or a negative value) to disable the cap.
+cq_test:
+  max_run_seconds: 3600

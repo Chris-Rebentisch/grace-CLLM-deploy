@@ -1,0 +1,60 @@
+# Phase 7 Requirements Traceability Matrix (Chunk 61, CP10).
+# Maps Roadmap §9.4 (#1–8) + §9.4.1 (#9–10) acceptance criteria
+# to test evidence paths. Consumed by test_phase7_rtm_coverage.py.
+
+criteria:
+  - id: 1
+    summary: "D274 trust-threshold / readiness gate"
+    test_ids:
+      - "tests/ingestion/test_readiness.py"
+
+  - id: 2
+    summary: ">=95% filtered before Tier 4"
+    test_ids:
+      - "tests/integration/test_phase7_path_a_e2e.py"
+      - "tests/ingestion/triage/test_pipeline.py"
+
+  - id: 3
+    summary: "Email adapter stack D418"
+    test_ids:
+      - "tests/ingestion/adapters/"
+
+  - id: 4
+    summary: "Re-triage weekly + state mgmt D421"
+    test_ids:
+      - "tests/ingestion/communications/test_retriage.py"
+
+  - id: 5
+    summary: "CommunicationEvent four graph layers"
+    test_ids:
+      - "tests/integration/test_phase7_path_a_e2e.py"
+
+  - id: 6
+    summary: "Permissions + Sensitivity D426"
+    test_ids:
+      - "tests/ingestion/communications/test_sensitivity_tagger.py"
+      - "tests/permissions/test_d270_invariant.py"
+
+  - id: 7
+    summary: "Recon communication evidence"
+    test_ids:
+      - "tests/recon/test_evidence_origin_integration.py"
+      - "tests/integration/test_phase7_path_a_e2e.py"
+
+  - id: 8
+    summary: "Change_Directive communication evidence — satisfied by composition"
+    test_ids:
+      - "tests/graph/test_evidence_origin_property.py"
+      - "tests/extraction/test_graph_writer_evidence_origin.py"
+
+  - id: 9
+    summary: "Voice & Tone D422/D423"
+    test_ids:
+      - "tests/ingestion/communications/voice_tone/"
+
+  - id: 10
+    summary: "Deployment paths D415-D417"
+    test_ids:
+      - "tests/integration/test_phase7_path_a_e2e.py"
+      - "tests/integration/test_phase7_path_b_e2e.py"
+      - "tests/integration/test_phase7_path_c_e2e.py"

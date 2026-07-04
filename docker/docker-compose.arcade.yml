@@ -1,0 +1,89 @@
+services:
+  arcadedb:
+    image: arcadedata/arcadedb-minimal:26.5.1
+    container_name: grace-arcadedb
+    # D138 airgap-default: ArcadeDB Studio (2480) and binary protocol (2424)
+    # bind loopback only. Operators needing wider binding use
+    # docker-compose.override.yml (D455).
+    ports:
+      - "127.0.0.1:2480:2480"   # HTTP/REST API
+      - "127.0.0.1:2424:2424"   # Binary protocol
+    volumes:
+      # Named Docker volume — the portable default. Works identically on
+      # macOS, Windows, and Linux with no host-path, ${HOME}, or permissions
+      # assumptions, and survives container recreation.
+      #
+      # NOTE: the arcadedata/arcadedb-minimal:26.5.1 image declares
+      # /home/arcadedb/databases as its data VOLUME (NOT /opt/arcadedb/...).
+      # Earlier versions used /opt; the image moved it under /home in the
+      # 26.x line. Mounting /opt/arcadedb/databases is a no-op —
+      # ArcadeDB writes to /home/arcadedb/databases regardless and Docker
+      # auto-creates an anonymous volume for that path.
+      #
+      # D478 (D356 capture-the-why, TESTING_LOG R7-H1): the mount must
+      # target /home/arcadedb/databases (not /opt/arcadedb/databases).
+      # The 26.x image moved the VOLUME declaration; the original path was
+      # a no-op. Authorization: D478.
+      #
+      # Want the data host-visible (backup-able in Finder/Explorer)?
+      # Bind-mount via a docker-compose.override.yml instead, e.g.:
+      #   services:
+      #     arcadedb:
+      #       volumes:
+      #         - "/absolute/path/on/host/arcadedb:/home/arcadedb/databases"
+      #
+      # EXISTING installs: your data stays wherever your old bind mount
+      # pointed (e.g. a previous ${HOME}/Desktop path) — use the override
+      # above to keep using that location, or copy it into the named volume.
+      - grace_arcadedb_data:/home/arcadedb/databases
+    # nofile: raise the container's open-file-descriptor cap from the Linux
+    # default (1024) to 65536. ArcadeDB (OrientDB lineage) holds an fd per
+    # socket + per JVector mmap'd index file + per DB bucket; under a full
+    # test suite the per-query connection churn exhausted 1024 fds, the
+    # Undertow accept loop began failing, and the server returned HTTP 000
+    # while staying alive (no OOM-kill) — wedged until manual restart. This
+    # is the documented ArcadeDB/OrientDB production guidance and is correct
+    # on ANY host (permanent — keep after the RAM upgrade).
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    environment:
+      # JVM heap is set via ARCADEDB_OPTS_MEMORY (below), NOT via JAVA_OPTS.
+      # The image's server.sh launches `$JAVA_OPTS $ARCADEDB_OPTS_MEMORY
+      # $JAVA_OPTS_SCRIPT`, and the base image ships ENV
+      # ARCADEDB_OPTS_MEMORY="-Xms2G -Xmx2G" — which sits AFTER JAVA_OPTS on
+      # the command line, so any -Xmx in JAVA_OPTS is silently overridden
+      # (last -Xmx wins). Control heap here.
+      # vectorIndex.graphBuildCacheSize: cap the JVector HNSW graph-build cache
+      # (default 100_000 ≈ 313 MB/rebuild for 768-dim). ArcadeDB 26.5.1 (D445)
+      # rebuilds the HNSW index every 100 mutations; the suite's write-heavy
+      # bursts (per-entity _embedding writes) churned this and were the heap-OOM
+      # driver. 10_000 bounds per-rebuild RAM with no correctness effect (memory
+      # cap only). Forward-compatible: raise on the 128 GB host for large corpora.
+      JAVA_OPTS: >-
+        -Darcadedb.server.rootPassword=${ARCADE_PASSWORD:-gracedev}
+        -Darcadedb.vectorIndex.graphBuildCacheSize=50000
+      # Heap sizing. Root cause of the full-test-suite wedge was a JVM heap
+      # OutOfMemoryError, not fd/thread exhaustion: full-corpus reads
+      # (``MATCH (n) WHERE n._deprecated = false RETURN n``) materialize every
+      # vertex incl. 768-dim ``_embedding`` blobs into heap, exhausting the
+      # 2 GB default ~1 min into the run (the JVM dumped a ~3.9 GB hprof and
+      # hung at HTTP 000). -Xmx5g gives the result-set materialization room;
+      # paired with the Colima VM bumped to 8 GB (see CLAUDE.md run notes).
+      # Forward-compatible: scale UP on the 128 GB host, never down/revert.
+      # (low-ram profile removed — it was a revert-y small-box throttle that
+      # did NOT address the heap OOM. The nofile ulimit above is permanent.)
+      ARCADEDB_OPTS_MEMORY: "-Xms8G -Xmx20g"
+      # Disable auto heap-dump-on-OOM. The image's server.sh bakes
+      # -XX:+HeapDumpOnOutOfMemoryError into $JAVA_OPTS_SCRIPT; $ARCADEDB_JMX
+      # is appended AFTER it on the command line, so setting the disable flag
+      # here wins (last +/- flag wins). Without this, an OOM writes a ~9 GB
+      # hprof (16s) that wedges the server and threatens the 20 GB VM disk.
+      # We already root-caused the OOM (heap exhaustion) — dumps add no signal,
+      # only risk. (This also drops JMX remote monitoring, unused in dev/test.)
+      ARCADEDB_JMX: "-XX:-HeapDumpOnOutOfMemoryError"
+    restart: unless-stopped
+
+volumes:
+  grace_arcadedb_data:

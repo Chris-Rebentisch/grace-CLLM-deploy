@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+
+# Environment
+.env
+.env.local
+# Backups/snapshots of .env may carry real credentials — never commit them
+.env.bak*
+.env.*.bak*
+
+# Machine-local docker-compose overrides (e.g. per-operator bind-mount
+# paths in docker-compose.arcade.local.yml). The tracked base compose
+# files carry the canonical config; overrides redirect to per-machine
+# paths and must stay out of git.
+docker/docker-compose.*.local.yml
+docker/docker-compose.*.override.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Claude Code auto-memory
+.claude/memory/
+.claude/worktrees/
+# Machine-local Claude Code settings (paths, permissions); do not publish
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Node (for frontend later)
+node_modules/
+.next/
+
+# Data files (customer-specific, never committed)
+data/
+seeds/parsed/
+
+# Local debug outputs
+debug_bottom_up_raw.txt
+
+# Logs
+*.log
+logs/
+
+# Pipeline orchestrator local markers / locks / logs (regenerate per machine)
+.build-state/
+
+# Harness run scratch (corpus exports, extraction inputs, entity registry) — regenerable
+workspace/
+
+# Local-first issue tracker + generated index: stays on the operator machine,
+# never ships in the deploy repo (issue narratives reference deployment data).
+.issues/
+BUGS.md
+.deepeval/

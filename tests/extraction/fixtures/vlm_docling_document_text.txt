@@ -1,0 +1,33 @@
+# Executive Summary
+
+Acme Holdings reported consolidated revenue of $4.2B for Q4 2025, representing a 12% year-over-year increase driven by growth in the insurance and real estate divisions. Operating margin improved to 18.3% from 16.1% in the prior year period.
+
+| Metric | Q4 2025 | Q4 2024 |
+|---|---|---|
+| Revenue | $4.2B | $3.75B |
+| Operating Margin | 18.3% | 16.1% |
+
+# Revenue by Division
+
+The following table presents revenue by operating division for the quarter ended December 31, 2025.
+
+# Operating Expenses
+
+| Category | Amount |
+|---|---|
+| Compensation | $1.85B |
+| Technology | $620M |
+| Facilities | $430M |
+| Other | $530M |
+
+Total operating expenses for Q4 2025 were $3.43B, an increase of 9% from the prior year. The primary drivers were higher compensation costs and increased technology spending.
+
+# Insurance Division Performance
+
+The insurance division generated $1.8B in premium income with a combined ratio of 94.2%. Policy retention rates remained strong at 91%, and new policy issuance increased 15% year-over-year.
+
+# Real Estate Portfolio
+
+The real estate division reported $980M in revenue from 147 commercial properties. Occupancy rates averaged 96.3% across the portfolio. Three new acquisitions closed during the quarter.
+
+Forward-looking statements in this document are subject to risks and uncertainties. Please refer to our SEC filings for additional information.

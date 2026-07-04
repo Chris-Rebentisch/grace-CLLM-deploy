@@ -1,0 +1,22 @@
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    uid: grace-prometheus
+  - name: Postgres
+    type: postgres
+    access: proxy
+    url: host.docker.internal:5432
+    database: grace
+    user: grace_readonly
+    editable: true
+    uid: grace-postgres
+    jsonData:
+      sslmode: disable
+      postgresVersion: 1700
+    secureJsonData:
+      password: ${GRAFANA_POSTGRES_PASSWORD}

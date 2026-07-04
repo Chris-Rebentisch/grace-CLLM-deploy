@@ -1,0 +1,12 @@
+{
+  "_comment": "F-46: per-deployment dataset manifest. This packaged manifest selects the GOLD corpus files under the strict Testing-Standards contract; per-deployment datasets live in their own directories with their own (relaxed) manifests and are intentionally not listed here, so adding one never breaks the GOLD suite.",
+  "contract": "strict",
+  "files": [
+    "corporate_structure.json",
+    "insurance.json",
+    "legal.json",
+    "operations.json",
+    "real_estate.json",
+    "vendors.json"
+  ]
+}

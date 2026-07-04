@@ -1,0 +1,34 @@
+# Correlation Engine configuration (Chunk 33, D248/D250/D252).
+# Operator knobs for the five cross-module correlation pattern detectors.
+# The defaults match the Pydantic model in
+# src/analytics/correlation_engine/config.py — edits here override.
+
+prometheus_url: http://127.0.0.1:9090
+
+# Baseline / current rolling windows in days.
+baseline_window_days: 14  # TUNE-AFTER-FIRST-DEPLOYMENT
+current_window_days: 1   # TUNE-AFTER-FIRST-DEPLOYMENT
+
+# Sigma multiplier for baseline+std anomaly fires.
+sigma_multiplier: 3.0    # TUNE-AFTER-FIRST-DEPLOYMENT
+
+# Mann-Kendall (D251) minimum sample count and alpha.
+mann_kendall_min_points: 10
+mann_kendall_alpha: 0.05
+
+# MINE retention floor under which the trend rule fires when MK is
+# decreasing (D251).
+latest_value_floor_mine: 0.7  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+# Records below this strength are gauge-emitted but not persisted.
+emit_threshold: 0.0  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+# D252 raw-Prometheus allowlist. Pattern detectors MAY query these
+# metric families ONLY (plus signal-strength gauges and analytics_signals
+# rows). Family names below; histogram sub-series (_count, _bucket) are
+# resolved at query time.
+raw_metric_allowlist:
+  - grace_retrieval_strategy_contributions
+  - grace_retrieval_zero_results
+  - http_server_request_duration_seconds
+  - grace_extraction_triple_confidence

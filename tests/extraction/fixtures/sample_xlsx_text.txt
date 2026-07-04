@@ -1,0 +1,271 @@
+| Actual   |
+|----------|
+
+| Projected   |
+|-------------|
+
+| Action Taken   |
+|----------------|
+
+|                     |   QTY (g) | Cost                |
+|---------------------|-----------|---------------------|
+| White Rice Flour    |        88 | 0.352               |
+| Corn Starch - 98    |        68 | 0.20400000000000001 |
+| Brown Rice Flour    |        58 | 0.232               |
+| Tapioca Starch - 28 |        68 | 0.272               |
+| Baking Powder       |         8 | 0.064               |
+| Baking Soda         |         8 | 0.024               |
+| Xanthan Gum         |         8 | 0.32                |
+| Brown Sugar         |       198 | 0.594               |
+| Turbinado Sugar     |       108 | 0.324               |
+| Vanilla Paste       |        18 | 2.016               |
+| Salt                |        11 | 0.022               |
+| Butter              |       126 | 1.638               |
+| Egg                 |        97 | 0.679               |
+| Semi/Milk Chocolate |       348 | 5.22                |
+| Mung Bean Protein   |        28 | 0.9520000000000001  |
+| Inverted Sugar      |        18 | 0.18                |
+| Cream Cheese        |        58 | d                   |
+
+|                       | QTY (g)   | Cost                 |                                                                                   |
+|-----------------------|-----------|----------------------|-----------------------------------------------------------------------------------|
+| White Rice Flour      | 142       | 0.5680000000000001   |                                                                                   |
+| Corn Starch           | 74        | 0.222                |                                                                                   |
+| Brown Rice Flour      | 0         | 0                    |                                                                                   |
+| Tapioca Starch        | 62        | 0.248                |                                                                                   |
+| Baking Powder         | 6         | 0.048                |                                                                                   |
+| Baking Soda           | 6         | 0.018000000000000002 |                                                                                   |
+| Xanthan Gum           | 4         | 0.16                 |                                                                                   |
+| Brown Sugar           | 0         | 0                    |                                                                                   |
+| Turbinado Sugar       | 280       | 0.84                 |                                                                                   |
+| Vanilla paste         | 14        | 1.568                | Use a lower end liquid vanilla extract or reduce by 50%                           |
+| Salt                  | 10        | 0.02                 |                                                                                   |
+| Coconut Oil           | 30        | 0.12                 | Use a RDB Coconut Oil with Butter Flavoring                                       |
+| mung bean powder      | 30        | 0.67                 | Replace egg relplacement with mung bean powder                                    |
+| Vegan Milk Chocolate  | 200       | 3                    |                                                                                   |
+| Vegan White Chocolate |           | 0                    | Reduce the amount of Chocolate by 50% and add less expensive inclusions like nuts |
+| Macadamia Nuts        | 0         |                      |                                                                                   |
+| water                 | 110       | 0.01                 |                                                                                   |
+
+|                     |     1316 | 13.093             |
+|---------------------|----------|--------------------|
+| Individual Cookie g | 118      | 1.1739924012158054 |
+|                     |  11.1525 |                    |
+| Batch Size          |  11.1525 |                    |
+
+|                   |   968 | 7.492               |
+|-------------------|-------|---------------------|
+| Individual Cookie |     8 | 0.06191735537190082 |
+|                   |   121 |                     |
+|                   |   121 |                     |
+
+| Chocolate Chip   |
+|------------------|
+
+| White Chocolate Macadamia                       |
+|-------------------------------------------------|
+| Double Chocolate                                |
+| Chocolate Hazelnut - Nutella                    |
+| Lemon                                           |
+| Churro or Cinnamon Toast                        |
+| Cookie Monster - Blue, White and Milk Chocolate |
+| Peanut Butter                                   |
+
+|                        |   Flavor % |     |                |
+|------------------------|------------|-----|----------------|
+| English Coffee  Flavor |      0.002 | Max | pretty descent |
+| Butter Flavor          |      0.001 | Max | this sucks     |
+| white choc macadamia   |      0     | 0   | vomit          |
+| Peanut Butter          |      0.002 | Max | pretty descent |
+| Hazelnut               |      0.002 | Max | ok             |
+
+| Chocolate   |
+|-------------|
+
+| Cocoa Powder                      |    16 |   32 |
+|-----------------------------------|-------|------|
+| White Rice Flour                  |  26   |   52 |
+| Corn Starch                       |  22   |   44 |
+| Brown Rice Flour                  |  18   |   36 |
+| Tapioca Starch                    |  22   |   44 |
+| Baking Powder                     |   2.5 |    5 |
+| Baking Soda                       |   2.5 |    5 |
+| Xanthan Gum                       |   2.5 |    5 |
+| Brown Sugar                       |  70.5 |  141 |
+| Turbinado Sugar                   |  38   |   76 |
+| Vanilla Paste                     |   6.5 |   13 |
+| Salt                              |   4   |    8 |
+| Butter                            |  45   |   90 |
+| Egg                               |  38   |   76 |
+| Semi-Sweet/Bitter Chocolate Chips | 123   |  246 |
+| Mung Bean Protein                 |  10   |   20 |
+| Inverted Sugar                    |   6.5 |   13 |
+| Cream Cheese                      |  20.5 |   41 |
+
+| 111.5   |
+|---------|
+
+| Total               |     473.5 |       947 |
+|---------------------|-----------|-----------|
+| Individual Cookie g | 118       | 118       |
+| Cookie Per Batch    |   4.01271 |   8.02542 |
+
+| Brownie            |      |    |
+|--------------------|------|----|
+| Dark Chocolate 70% | 25   | 50 |
+| White Rice Flour   |  6   | 12 |
+| Corn Starch        |  6   | 12 |
+| Brown Rice Flour   |  4   |  8 |
+| Tapioca Starch     |  5   | 10 |
+| Cocoa Powder       |  7   | 14 |
+| Baking Powder      |  1.5 |  3 |
+| Butter             | 28   | 56 |
+| Brown Sugar        | 44   | 88 |
+| Vanilla Paste      |  2   |  4 |
+| Egg                | 28   | 56 |
+
+| Total               |    156.5 |
+|---------------------|----------|
+| Individual Cookie g | 39       |
+| Cookie Per Batch    |  4.01282 |
+
+| Production Size   | 10   |
+|-------------------|------|
+
+|                      |   QTY (g) |      Cost |
+|----------------------|-----------|-----------|
+| White Rice Flour     |  78.2222  | 0.312889  |
+| Corn Starch          |  63.1111  | 0.189333  |
+| Brown Rice Flour     |  51.5556  | 0.206222  |
+| Tapioca Starch       |  63.1111  | 0.252444  |
+| Baking Powder        |   7.11111 | 0.0568889 |
+| Baking Soda          |   7.11111 | 0.0213333 |
+| Xanthan Gum          |   7.11111 | 0.284444  |
+| Brown Sugar          | 176       | 0.528     |
+| Turbinado Sugar      |  96       | 0.288     |
+| Vanilla Paste        |  16       | 1.792     |
+| Salt                 |   9.77778 | 0.0195556 |
+| Butter               | 115.556   | 1.50222   |
+| Egg                  |  86.2222  | 0.603556  |
+| Semi/Milk  Chocolate | 309.333   | 4.64      |
+| Mung Bean Protein    |  24.8889  | 0.846222  |
+| Inverted Sugar       |  16       | 0.16      |
+| Cream Cheese         |  51.5556  | 0.515556  |
+
+|    |   88 |   7.822222222222222 |
+|----|------|---------------------|
+|    |   71 |            6.31111  |
+|    |   58 |            5.15556  |
+|    |   71 |            6.31111  |
+|    |    8 |            0.711111 |
+|    |    8 |            0.711111 |
+|    |    8 |            0.711111 |
+|    |  198 |           17.6      |
+|    |  108 |            9.6      |
+|    |   18 |            1.6      |
+|    |   11 |            0.977778 |
+|    |  130 |           11.5556   |
+|    |   97 |            8.62222  |
+|    |  348 |           30.9333   |
+| /; |   28 |            2.48889  |
+|    |   18 |            1.6      |
+|    |   58 |            5.15556  |
+
+|                     |   1178.6666666666667 | 12.218666666666667   |
+|---------------------|----------------------|----------------------|
+| Individual Cookie g |                  118 |                      |
+
+| Unit Batch Size   | 9.988700564971753   |
+|-------------------|---------------------|
+
+| 4-Pack   | 472   |
+|----------|-------|
+
+| Cost per gram   | Source   |
+|-----------------|----------|
+
+| White Rice Flour      |   0.004 | https://www.webstaurantstore.com/bobs-red-mill-25-lb-gluten-free-white-rice-flour/1041461B25.html                                                                                                                                                                                                                                                                                                                                                                      |
+|-----------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Corn Starch           |   0.003 | https://www.webstaurantstore.com/starch-corn-argo-25/104ARGOCS25.html                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Brown Rice Flour      |   0.004 | https://www.webstaurantstore.com/bobs-red-mill-25-lb-gluten-free-brown-rice-flour/1041460B25.html                                                                                                                                                                                                                                                                                                                                                                      |
+| Tapioca Starch        |   0.004 | https://www.webstaurantstore.com/tapioca-starch-flour-50-lb/104TAPIOCAST.html                                                                                                                                                                                                                                                                                                                                                                                          |
+| Baking Powder         |   0.008 | https://www.webstaurantstore.com/clabber-girl-10-lb-double-acting-baking-powder/999NOT1030.html                                                                                                                                                                                                                                                                                                                                                                        |
+| Baking Soda           |   0.003 | https://www.webstaurantstore.com/arm-hammer-4-lb-baking-soda/99901170.html                                                                                                                                                                                                                                                                                                                                                                                             |
+| Xanthan Gum           |   0.04  | https://www.webstaurantstore.com/5-lb-xanthan-gum/104991852.html                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Brown Sugar           |   0.003 | https://www.webstaurantstore.com/dark-brown-sugar-25-lb/104SUGDKBR25.html                                                                                                                                                                                                                                                                                                                                                                                              |
+| Turbinado Sugar       |   0.003 | https://www.webstaurantstore.com/wholesome-sweeteners-natural-turbinado-sugar-50-lb/104WSTURBNAT.html                                                                                                                                                                                                                                                                                                                                                                  |
+| Vanilla Paste         |   0.112 | https://www.amazon.com/dp/B01DUY18GC/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B01DUY18GC&pd_rd_w=BdE4L&content-id=amzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab&pf_rd_p=386c274b-4bfe-4421-9052-a1a56db557ab&pf_rd_r=ZKB21CH2MEJSGRH4QK9M&pd_rd_wg=Ue1X8&pd_rd_r=2aa6fb5f-4ad2-4c4b-aaf6-2c2e80db0638&s=home-garden&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM                                                                                                          |
+| Salt                  |   0.002 | https://www.webstaurantstore.com/morton-25-lb-bulk-iodized-table-salt/102SALTIOD25.html                                                                                                                                                                                                                                                                                                                                                                                |
+| Butter                |   0.013 | https://www.webstaurantstore.com/flora-professional-plant-based-vegan-unsalted-butter-brick-1-lb-case/874UPKIT0994.html                                                                                                                                                                                                                                                                                                                                                |
+| Egg                   |   0.007 | https://www.webstaurantstore.com/just-egg-2-lb-plant-based-vegan-liquid-egg-substitute-case/873EAT100047.html                                                                                                                                                                                                                                                                                                                                                          |
+| Semi Sweet Chocolate  |   0.015 | https://shop.chefrubber.com/item/503790/Felchlin-Vegan-Choc-Brun/                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Vegan White Chocolate |   0.025 | https://shop.chefrubber.com/item/503792/Felchlin-Vegan-Choc-Blanc/                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Macadamia Nuts        |   0.017 | https://www.webstaurantstore.com/15-lb-dry-roasted-unsalted-macadamia-nuts/113MCDRNS15.html                                                                                                                                                                                                                                                                                                                                                                            |
+| Walnuts               |   0.006 | https://www.webstaurantstore.com/25-lb-raw-walnut-halves/113WNPCRW25.html                                                                                                                                                                                                                                                                                                                                                                                              |
+| Coconut Oil           |   0.004 | https://www.webstaurantstore.com/louana-35-lb-bag-in-box-white-coconut-oil/101LOU21063.html                                                                                                                                                                                                                                                                                                                                                                            |
+| Mung Bean Protien     |   0.034 | https://smoov.ca/products/mung-bean-protein?variant=43670574760087                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Inverted Sugar        |   0.01  | https://www.amazon.com/CAULLET-Caullet-Inverted-Sugar-Syrup/dp/B00270SKV2/ref=sr_1_10?crid=2PN1HYB92IGR1&dib=eyJ2IjoiMSJ9.LOJIuClmEMqOQvKtO7WVG_d2XDKet_Ryi1PTj3Om7GWz6r4cTNMN_7OJpdrzPNtcetf9wUyC5OiQ0cSCvbyGWZUGhpMDKsozXlNdP8ERB8Q2OhiZB0Qq5k-yieAMpp94I7rCTtxaLqn9RaKOSr1J1ijehpNLs6_TcYMnkWWI1RsywaRat1jjDqwzUhcikLi50uzNdGeQJYBwTmlmHBQMTw.3xSN8enKa9EpxN1XLhEzH2bdXfD2mHlfsAu2yzg6vCw&dib_tag=se&keywords=trimoline&qid=1756931407&sprefix=%2Caps%2C237&sr=8-10 |
+| Cream Cheese          |   0.01  | costco                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+|                     | Cost   |        |                                        |
+|---------------------|--------|--------|----------------------------------------|
+| 24 x 7g Cookies     | 1.92   |        |                                        |
+| 12 x Indiv. Bags    |        |        |                                        |
+| 2x 6 Ct Bags        |        |        |                                        |
+| 2x Ribbon Tie       |        |        |                                        |
+| Packaging           | 0.15   |        |                                        |
+| Shipping box        | 0      | 10x7x2 | 3 cookies x 2 cookies x 2 cookies deep |
+| shipping box insert | 0      |        |                                        |
+
+| 2.07   |
+|--------|
+
+| Shipping   | 6   |
+|------------|-----|
+
+| 1000 Sq Ft Kitchen   |
+|----------------------|
+
+|   Month 1 |   Month 2 |   Month 3 |   Month 4 |   Month 5 |   Month 6 |   Month 7 |   Month 8 |   Month 9 |   Month 10 |   Month 11 |   Month 12 |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|------------|------------|------------|
+|      2000 |      2000 |      2000 |      2000 |      2000 |      2000 |      2000 |      2000 |      2000 |       2000 |       2000 |       2000 |
+|       700 |       700 |       700 |       700 |       700 |       700 |       700 |       700 |       700 |        700 |        700 |        700 |
+|       695 |       695 |       695 |       695 |       695 |       695 |       695 |       695 |       695 |        695 |        695 |        695 |
+|      7000 |      7875 |      8750 |      9625 |     10500 |     11375 |     12250 |     13125 |     14000 |      14875 |      15750 |      15750 |
+|       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |        900 |        900 |        900 |
+|       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |        900 |        900 |        900 |
+|      1350 |      1350 |      1350 |      1350 |      1350 |      1350 |      1350 |      1350 |      1350 |       1350 |       1350 |       1350 |
+|      5000 |      5000 |      5000 |      5000 |      8000 |      8000 |      8000 |      8000 |     13000 |      13000 |      13000 |      13000 |
+|       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |       900 |        900 |        900 |        900 |
+
+| Rent               |
+|--------------------|
+| Utilities          |
+| Overhead           |
+| COGS               |
+| Shipping/Receiving |
+| Pro. Services      |
+| Financial Fees     |
+| Payroll            |
+| Misc Exp           |
+
+| Total Expenses   |
+|------------------|
+
+| 19445   | 20320   | 21195   | 22070   | 25945   | 26820   | 27695   | 28570   | 34445   | 35320   | 36195   | 36195   |
+|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+
+| Sales     | 1,000 unit min.   | 20000   | 22500   | 25000   | 27500   | 30000   | 32500   | 35000   | 37500   | 40000   | 42500   | 45000   | 45000   | 402500   |
+|-----------|-------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|----------|
+| at home = | 4hr/day/20d/M     |         |         |         |         |         |         |         |         |         |         |         |         |          |
+| Net       |                   | 555     | 2180    | 3805    | 5430    | 4055    | 5680    | 7305    | 8930    | 5555    | 7180    | 8805    | 8805    |          |
+
+| 555   | 2180   | 3805   | 5430   | 4055   | 5680   | 7305   | 8930   | 5555   | 7180   | 8805   | 8805   |
+|-------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+
+| Mixer            |   2500 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |   80 |
+|------------------|--------|------|------|------|------|------|------|------|------|------|------|------|------|
+| Oven (216 pc/hr) |   4000 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |  110 |
+| tables/shelves   |   3000 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |   85 |
+| Tools            |   5000 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |  140 |
+| Renovations      |  10000 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |  280 |

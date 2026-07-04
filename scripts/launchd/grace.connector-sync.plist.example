@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Example launchd plist for the GrACE Connector Sync Pipeline (Chunk 53).
+
+  Operational model (D246 mirror): the sync pipeline is CLI-only. APScheduler /
+  FastAPI lifespan integration is intentionally omitted. Operators schedule the
+  CLI via host cron / launchd.
+
+  Install (per-user):
+    1. Copy this file to ~/Library/LaunchAgents/com.grace.connector-sync.plist
+    2. Edit the placeholders:
+       - GRACE_HOME       -> absolute path to your grace checkout
+       - PYTHON_BIN       -> absolute path to the Python binary
+       - CONNECTOR_TYPE   -> registered connector type (e.g. "synthetic")
+       - NAMESPACE_ID     -> target graph_namespaces.id UUID
+    3. Load it:           launchctl load ~/Library/LaunchAgents/com.grace.connector-sync.plist
+    4. Verify:            launchctl list | grep com.grace.connector-sync
+
+  Schedule below runs the sync daily at 02:00. Adjust StartCalendarInterval
+  to match your operational tempo.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.grace.connector-sync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/PYTHON_BIN</string>
+        <string>-m</string>
+        <string>src.connectors.sync_pipeline</string>
+        <string>run</string>
+        <string>--connector-type</string>
+        <string>CONNECTOR_TYPE</string>
+        <string>--namespace-id</string>
+        <string>NAMESPACE_ID</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/GRACE_HOME</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/GRACE_HOME</string>
+    </dict>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>2</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/GRACE_HOME/.build-state/grace-connector-sync.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/GRACE_HOME/.build-state/grace-connector-sync.stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

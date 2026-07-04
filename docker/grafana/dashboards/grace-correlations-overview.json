@@ -1,0 +1,244 @@
+{
+  "__inputs": [
+    {"name": "DS_PROMETHEUS", "label": "Prometheus", "type": "datasource", "pluginId": "prometheus", "pluginName": "Prometheus"},
+    {"name": "DS_POSTGRES", "label": "Postgres", "type": "datasource", "pluginId": "postgres", "pluginName": "PostgreSQL"}
+  ],
+  "annotations": {"list": []},
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "title": "Signal Pipeline Overview",
+      "type": "dashboards",
+      "tags": ["grace", "signals"],
+      "asDropdown": false,
+      "includeVars": false,
+      "keepTime": true,
+      "targetBlank": false
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "extraction_quality_problem — Signal A high + retrieval-precision drop. Drill-through to Signal Pipeline Overview for upstream signal detail.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "links": [
+            {"title": "Drill: Signal Pipeline Overview", "url": "/d/grace-signals-overview", "targetBlank": false}
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "id": 1,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max(grace_correlation_extraction_quality_problem_strength{job=\"grace_init\"})",
+          "legendFormat": "extraction_quality_problem",
+          "refId": "A"
+        }
+      ],
+      "title": "Pattern — extraction_quality_problem",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "graph_or_index_problem — retrieval latency p95 spike + all six signals depressed. Drill-through to Signal Pipeline Overview.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "links": [
+            {"title": "Drill: Signal Pipeline Overview", "url": "/d/grace-signals-overview", "targetBlank": false}
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "id": 2,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max(grace_correlation_graph_or_index_problem_strength{job=\"grace_init\"})",
+          "legendFormat": "graph_or_index_problem",
+          "refId": "A"
+        }
+      ],
+      "title": "Pattern — graph_or_index_problem",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "schema_drift_per_module — Signal C and Signal D both elevated for the same ontology module. Drill-through to Signal Pipeline Overview.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "links": [
+            {"title": "Drill: Signal Pipeline Overview", "url": "/d/grace-signals-overview", "targetBlank": false}
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+      "id": 3,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max by (ontology_module) (grace_correlation_schema_drift_per_module_strength{job=\"grace_init\"})",
+          "legendFormat": "{{ontology_module}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Pattern — schema_drift_per_module",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "cq_regression_pre_extraction — Signal F elevated + Mann-Kendall non-decreasing trend on triple-confidence. Drill-through to Signal Pipeline Overview.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "links": [
+            {"title": "Drill: Signal Pipeline Overview", "url": "/d/grace-signals-overview", "targetBlank": false}
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+      "id": 4,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max by (ontology_module) (grace_correlation_cq_regression_pre_extraction_strength{job=\"grace_init\"})",
+          "legendFormat": "{{ontology_module}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Pattern — cq_regression_pre_extraction",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "relationship_gap_propagation — Signal B per-module + global retrieval zero-results spike. Drill-through to Signal Pipeline Overview.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "links": [
+            {"title": "Drill: Signal Pipeline Overview", "url": "/d/grace-signals-overview", "targetBlank": false}
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+      "id": 5,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max by (ontology_module) (grace_correlation_relationship_gap_propagation_strength{job=\"grace_init\"})",
+          "legendFormat": "{{ontology_module}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Pattern — relationship_gap_propagation",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Recent diagnostic records (latest 50) joined to their correlation_runs row.",
+      "fieldConfig": {
+        "defaults": {"color": {"mode": "thresholds"}, "custom": {"align": "auto"}},
+        "overrides": []
+      },
+      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 24},
+      "id": 6,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "table",
+          "rawSql": "SELECT diagnostic_records.detected_at, diagnostic_records.pattern_name, diagnostic_records.suspected_root_cause_module, diagnostic_records.ontology_module, diagnostic_records.correlation_strength, diagnostic_records.human_summary FROM diagnostic_records JOIN correlation_runs ON correlation_runs.id = diagnostic_records.run_id WHERE diagnostic_records.detected_at > $__timeFrom() AND diagnostic_records.detected_at < $__timeTo() ORDER BY diagnostic_records.detected_at DESC LIMIT 50;",
+          "refId": "A"
+        }
+      ],
+      "title": "Recent Diagnostic Records",
+      "type": "table"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Recent alert_events from Grafana Unified Alerting webhook (latest 50).",
+      "fieldConfig": {
+        "defaults": {"color": {"mode": "thresholds"}, "custom": {"align": "auto"}},
+        "overrides": []
+      },
+      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 34},
+      "id": 7,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "table",
+          "rawSql": "SELECT fired_at, resolved_at, alertname, severity, ontology_module, state FROM alert_events WHERE fired_at > $__timeFrom() AND fired_at < $__timeTo() ORDER BY fired_at DESC LIMIT 50;",
+          "refId": "A"
+        }
+      ],
+      "title": "Recent Alert Events",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["grace", "correlations", "alerting"],
+  "templating": {"list": []},
+  "time": {"from": "now-7d", "to": "now"},
+  "timezone": "",
+  "title": "GrACE Correlation Engine — Overview",
+  "uid": "grace-correlations-overview",
+  "version": 1,
+  "weekStart": ""
+}

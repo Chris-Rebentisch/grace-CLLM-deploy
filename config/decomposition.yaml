@@ -1,0 +1,48 @@
+# Decomposition pipeline operator-tunable defaults (Chunk 40, D277/D311/D313).
+#
+# UMAP parameters ship D277 §2.2 verbatim — `min_dist=0.1` is the locked
+# value (NOT BERTopic's default `0.0`). The `outlier_ratio_at_gate` field
+# in `Layer2Decision` captures calibration signal for future re-tuning.
+
+umap:
+  n_components: 10
+  n_neighbors: 15
+  min_dist: 0.1
+  metric: cosine
+  random_state: 42
+
+layer2:
+  outlier_ratio_gate: 0.30
+
+layer3:
+  ner:
+    model: "qwen2.5:7b-instruct"
+    concurrency: 4
+    per_10k_doc_budget_seconds: 7200
+  leiden:
+    seeds: [1, 2, 3, 4, 5]
+    resolution: 1.0
+    beta: 0.01
+    n_iterations: 2
+  ari_threshold: 0.6
+
+layer1:
+  max_depth: null
+  exclude_hidden: true
+
+# Chunk 41 (D320) — Layer 5 Structured Interview operator knobs.
+# `reformulation_pass_cap` bounds the number of `reject_all_reformulate`
+# decisions in a single lineage chain (default 1; outline Q1 default).
+# Operators may raise to 2 if evidence warrants; lowering to 0 disables
+# IDEA2-style reformulation entirely.
+layer5:
+  reformulation_pass_cap: 1
+
+# Chunk 41 (D324) — Layer 6 sample-CQ adapter knobs.
+# `n` is the target number of sample CQs per ProposedSegment.
+# `surface_cq_type` toggles whether the per-CQ `cq_type` label is
+# rendered in the operator panel (default true; outline Q2 resolved).
+layer6:
+  sample_cqs:
+    n: 5
+    surface_cq_type: true

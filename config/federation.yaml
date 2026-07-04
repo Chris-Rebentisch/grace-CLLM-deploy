@@ -1,0 +1,36 @@
+# Federation infrastructure configuration (Chunk 51, D402–D405).
+# Operator knobs for layer-selective sharing, entity resolution,
+# and label prefix conventions.
+
+shared_layers:
+  - domain
+  - temporal
+
+siloed_layers:
+  - provenance
+  - governance
+
+provenance_surface_properties:
+  - source_document_id
+  - extraction_date
+  - last_updated
+  - human_reviewed
+
+embedding_similarity_threshold: 0.85
+
+label_prefix_convention: PascalCase
+
+ollama_base_url: "http://localhost:11434"
+
+embedding_model: "nomic-embed-text"
+
+# Chunk 52 (D406–D408) — federation query routing knobs.
+# D498 (2026-05-28): default posture is now "degrade" (was "fail"). On a
+# mother-namespace failure (timeout OR unreachable), serve partial/empty results
+# with a warning instead of 504. Set to "fail" to require the mother (strict
+# D408 504). circuit_breaker_cooldown_seconds skips a failed namespace for that
+# window so repeated queries don't re-pay the timeout (0 disables).
+query_routing:
+  per_namespace_timeout_seconds: 5
+  mother_timeout_posture: "degrade"
+  circuit_breaker_cooldown_seconds: 60

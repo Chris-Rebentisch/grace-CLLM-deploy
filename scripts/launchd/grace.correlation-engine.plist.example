@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Example launchd plist for the GrACE Cross-Module Correlation Engine (Chunk 33).
+
+  Operational model (D246, mirrored from Chunk 32 D246): the correlation
+  engine is CLI-only. APScheduler / FastAPI lifespan integration is
+  intentionally omitted. Operators schedule the CLI via host cron /
+  launchd.
+
+  Install (per-user):
+    1. Copy this file to ~/Library/LaunchAgents/com.grace.correlation-engine.plist
+    2. Edit the placeholders:
+       - GRACE_HOME       -> REPLACE THIS: absolute path to your grace checkout
+       - PYTHON_BIN       -> REPLACE THIS: absolute path to the Python you used to
+                             install pymannkendall (`python3 -m pip --version` → bin)
+    3. Load it:           launchctl load ~/Library/LaunchAgents/com.grace.correlation-engine.plist
+    4. Verify:            launchctl list | grep com.grace.correlation-engine
+
+  Schedule below runs once daily at 03:30 local time, consistent with
+  the Chunk 33 spec recommended cadence. The CLI exits 0 on success,
+  1 on partial failure, 2 on hard error — launchd will record these in
+  the system log.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.grace.correlation-engine</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/PYTHON_BIN</string>
+        <string>-m</string>
+        <string>src.analytics.correlation_engine</string>
+        <string>run-all</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/GRACE_HOME</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/GRACE_HOME</string>
+    </dict>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/GRACE_HOME/.build-state/grace-correlation-engine.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/GRACE_HOME/.build-state/grace-correlation-engine.stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

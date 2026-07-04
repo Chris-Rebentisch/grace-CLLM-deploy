@@ -1,0 +1,169 @@
+# config/cq_templates.yaml
+# CLaRO-inspired CQ templates for guided ontology authoring.
+# Customer-extensible. Add your own templates following the same format.
+
+templates:
+  # --- SCOPING (what should the ontology cover?) ---
+  - id: scoping_what_types
+    cq_type: SCOPING
+    pattern: "What types of {entity} does the organization have?"
+    placeholders: ["entity"]
+    example: "What types of insurance policies does the organization have?"
+    hint: "Use this to identify categories of things in your business."
+    domain_affinity: []
+
+  - id: scoping_what_exists
+    cq_type: SCOPING
+    pattern: "What {entity_plural} exist in {context}?"
+    placeholders: ["entity_plural", "context"]
+    example: "What legal entities exist in the BVI?"
+    hint: "Use this to map what you have in a specific area or location."
+    domain_affinity: ["corporate_structure", "legal"]
+
+  - id: scoping_what_areas
+    cq_type: SCOPING
+    pattern: "What areas of {domain} does the organization manage?"
+    placeholders: ["domain"]
+    example: "What areas of real estate does the organization manage?"
+    hint: "Use this to define the scope of a business area."
+    domain_affinity: []
+
+  # --- VALIDATING (does this specific fact exist?) ---
+  - id: validating_specific_value
+    cq_type: VALIDATING
+    pattern: "What is the {property} of {entity}?"
+    placeholders: ["property", "entity"]
+    example: "What is the expiry date of the D&O policy?"
+    hint: "Use this when you need to look up a specific detail about something."
+    domain_affinity: []
+
+  - id: validating_who
+    cq_type: VALIDATING
+    pattern: "Who is the {role} for {entity}?"
+    placeholders: ["role", "entity"]
+    example: "Who is the registered agent for the company in Florida?"
+    hint: "Use this to find out who holds a specific role or responsibility."
+    domain_affinity: ["corporate_structure", "legal", "vendors"]
+
+  - id: validating_status
+    cq_type: VALIDATING
+    pattern: "What is the current status of {entity}?"
+    placeholders: ["entity"]
+    example: "What is the current status of the development project?"
+    hint: "Use this to check the current state of a project, contract, or application."
+    domain_affinity: ["real_estate", "operations", "legal"]
+
+  - id: validating_when
+    cq_type: VALIDATING
+    pattern: "When was {entity} {action}?"
+    placeholders: ["entity", "action"]
+    example: "When was the operating agreement last amended?"
+    hint: "Use this to find dates of past events."
+    domain_affinity: []
+
+  # --- FOUNDATIONAL (what are the basic categories?) ---
+  - id: foundational_subtypes
+    cq_type: FOUNDATIONAL
+    pattern: "What are the different kinds of {entity}?"
+    placeholders: ["entity"]
+    example: "What are the different kinds of contracts?"
+    hint: "Use this to break a broad category into specific types."
+    domain_affinity: []
+
+  - id: foundational_properties
+    cq_type: FOUNDATIONAL
+    pattern: "What information do we track about each {entity}?"
+    placeholders: ["entity"]
+    example: "What information do we track about each vendor?"
+    hint: "Use this to define what details matter for a category."
+    domain_affinity: []
+
+  - id: foundational_lifecycle
+    cq_type: FOUNDATIONAL
+    pattern: "What stages does a {entity} go through?"
+    placeholders: ["entity"]
+    example: "What stages does a construction project go through?"
+    hint: "Use this to understand the lifecycle of something that changes over time."
+    domain_affinity: ["real_estate", "operations"]
+
+  # --- RELATIONSHIP (how do things connect?) ---
+  - id: relationship_which_connected
+    cq_type: RELATIONSHIP
+    pattern: "Which {entity_a_plural} are connected to {entity_b}?"
+    placeholders: ["entity_a_plural", "entity_b"]
+    example: "Which vendors are connected to the development project?"
+    hint: "Use this to find connections between two types of things."
+    domain_affinity: []
+
+  - id: relationship_what_covers
+    cq_type: RELATIONSHIP
+    pattern: "What {entity_a_plural} cover {entity_b}?"
+    placeholders: ["entity_a_plural", "entity_b"]
+    example: "What insurance policies cover the development project?"
+    hint: "Use this when something protects, covers, or applies to something else."
+    domain_affinity: ["insurance", "legal"]
+
+  - id: relationship_temporal
+    cq_type: RELATIONSHIP
+    pattern: "When does {entity} expire or renew?"
+    placeholders: ["entity"]
+    example: "When does the D&O policy expire?"
+    hint: "Use this for anything with a deadline, expiry, or renewal date."
+    domain_affinity: ["insurance", "legal", "operations"]
+
+  - id: relationship_ownership
+    cq_type: RELATIONSHIP
+    pattern: "What does {entity} own or control?"
+    placeholders: ["entity"]
+    example: "What does the holding company own or control?"
+    hint: "Use this to trace ownership chains and corporate structures."
+    domain_affinity: ["corporate_structure", "real_estate"]
+
+  - id: relationship_obligation
+    cq_type: RELATIONSHIP
+    pattern: "What obligations does {entity} have related to {context}?"
+    placeholders: ["entity", "context"]
+    example: "What obligations does the company have related to tax withholding?"
+    hint: "Use this for regulatory, contractual, or legal requirements."
+    domain_affinity: ["legal", "tax"]
+
+  - id: relationship_serves
+    cq_type: RELATIONSHIP
+    pattern: "Which {entity_a_plural} provide services to {entity_b}?"
+    placeholders: ["entity_a_plural", "entity_b"]
+    example: "Which vendors provide services to the development project?"
+    hint: "Use this to map who serves or supports what."
+    domain_affinity: ["vendors", "operations"]
+
+  - id: relationship_jurisdiction
+    cq_type: RELATIONSHIP
+    pattern: "What {entity_plural} are governed by {jurisdiction} law?"
+    placeholders: ["entity_plural", "jurisdiction"]
+    example: "What contracts are governed by Bahamian law?"
+    hint: "Use this for anything that depends on a specific legal jurisdiction."
+    domain_affinity: ["legal", "corporate_structure", "tax"]
+
+  # --- METAPROPERTY (what properties does a property have?) ---
+  - id: metaproperty_change_tracking
+    cq_type: METAPROPERTY
+    pattern: "How has the {property} of {entity} changed over time?"
+    placeholders: ["property", "entity"]
+    example: "How has the ownership structure of the holding company changed over time?"
+    hint: "Use this when you need to track the history of a changing value."
+    domain_affinity: ["corporate_structure"]
+
+  - id: metaproperty_source
+    cq_type: METAPROPERTY
+    pattern: "Where did the information about {entity} come from?"
+    placeholders: ["entity"]
+    example: "Where did the information about this insurance policy come from?"
+    hint: "Use this when the source or reliability of information matters."
+    domain_affinity: []
+
+  - id: metaproperty_confidence
+    cq_type: METAPROPERTY
+    pattern: "How confident are we in the {property} of {entity}?"
+    placeholders: ["property", "entity"]
+    example: "How confident are we in the valuation of the property?"
+    hint: "Use this when you need to know how reliable a piece of information is."
+    domain_affinity: []

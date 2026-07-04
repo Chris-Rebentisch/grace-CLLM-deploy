@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Example launchd plist for the GrACE Proposal Generator (Chunk 47).
+
+  Operational model (D246 mirror): the generator is CLI-only. FastAPI
+  lifespan / APScheduler integration is intentionally omitted. Operators
+  schedule the CLI via host cron / launchd.
+
+  Install (per-user):
+    1. Copy this file to ~/Library/LaunchAgents/com.grace.proposal-generator.plist
+    2. Edit the placeholders:
+       - GRACE_HOME       -> absolute path to your grace checkout
+       - PYTHON_BIN       -> absolute path to the Python binary
+    3. Load it:           launchctl load ~/Library/LaunchAgents/com.grace.proposal-generator.plist
+    4. Verify:            launchctl list | grep com.grace.proposal-generator
+
+  Schedule below runs the generator once an hour (on the half-hour,
+  offset from signal pipeline). Adjust StartCalendarInterval to match
+  your operational tempo. The CLI exits 0 on success, 1 on partial
+  failure, 2 on hard error.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.grace.proposal-generator</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/PYTHON_BIN</string>
+        <string>-m</string>
+        <string>src.ontology.proposal_generator</string>
+        <string>run</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/GRACE_HOME</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/GRACE_HOME</string>
+    </dict>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/GRACE_HOME/.build-state/grace-proposal-generator.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/GRACE_HOME/.build-state/grace-proposal-generator.stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

@@ -1,0 +1,58 @@
+{
+  "_comment": "Read-only fixture for EC-3, EC-5, EC-6 assertions (Chunk 34, D262). The events here are intentionally minimal — they exercise the constraint shape, not the full Elicitation Protocol envelope. EC-3 asserts no streak/combo/lose_progress fields anywhere. EC-5 asserts pause/skip carries no penalty fields and progress_indicator is preserved. EC-6 asserts every mode_changed event carries a non-empty rationale.",
+  "ec3_no_streak_or_combo": [
+    {
+      "event_id": "00000000-0000-0000-0000-000000000001",
+      "event_type": "session_started",
+      "session_id": "11111111-1111-1111-1111-111111111111",
+      "occurred_at": "2026-05-05T10:00:00Z",
+      "payload": {"phase_state": "open", "progress_indicator": 0.0}
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000002",
+      "event_type": "decision_recorded",
+      "session_id": "11111111-1111-1111-1111-111111111111",
+      "occurred_at": "2026-05-05T10:01:00Z",
+      "payload": {"phase_state": "structure", "progress_indicator": 0.25}
+    }
+  ],
+  "ec5_pause_skip_unpenalized": [
+    {
+      "event_id": "00000000-0000-0000-0000-000000000010",
+      "event_type": "session_paused",
+      "session_id": "22222222-2222-2222-2222-222222222222",
+      "occurred_at": "2026-05-05T10:05:00Z",
+      "payload": {"phase_state": "structure", "progress_indicator": 0.50}
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000011",
+      "event_type": "session_resumed",
+      "session_id": "22222222-2222-2222-2222-222222222222",
+      "occurred_at": "2026-05-05T10:06:00Z",
+      "payload": {"phase_state": "structure", "progress_indicator": 0.50}
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000012",
+      "event_type": "step_skipped",
+      "session_id": "22222222-2222-2222-2222-222222222222",
+      "occurred_at": "2026-05-05T10:07:00Z",
+      "payload": {"phase_state": "structure", "progress_indicator": 0.50, "skip_reason": "user_initiated"}
+    }
+  ],
+  "ec6_mode_changed_with_rationale": [
+    {
+      "event_id": "00000000-0000-0000-0000-000000000020",
+      "event_type": "mode_changed",
+      "session_id": "33333333-3333-3333-3333-333333333333",
+      "occurred_at": "2026-05-05T10:10:00Z",
+      "payload": {"mode": "structure", "mode_rationale": "User opened a new chunk to scope."}
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000021",
+      "event_type": "mode_changed",
+      "session_id": "33333333-3333-3333-3333-333333333333",
+      "occurred_at": "2026-05-05T10:11:00Z",
+      "payload": {"mode": "clarify", "mode_rationale": "Open questions remain after structure pass."}
+    }
+  ]
+}

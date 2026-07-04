@@ -1,0 +1,18 @@
+# Grafana Unified Alerting notification policies (Chunk 33, D253).
+#
+# Root policy groups by alertname + severity + ontology_module to
+# minimize alert fatigue (D253). group_wait/group_interval/repeat_interval
+# default to the values reviewed in spec §10.
+
+apiVersion: 1
+
+policies:
+  - orgId: 1
+    receiver: grace-internal-webhook
+    group_by:
+      - alertname
+      - severity
+      - ontology_module
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 4h

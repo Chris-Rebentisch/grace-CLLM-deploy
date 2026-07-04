@@ -1,0 +1,128 @@
+[
+  {
+    "case_id": "real_estate-001",
+    "query_text": "Where is the Cedar Cay development located?",
+    "expected_output": "The Cedar Cay development is located in the Exumas chain of the Bahamas, as referenced in both the do-insurance inquiry and the Oakmont-Exuma scope-of-work record.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Single-vertex location lookup."
+  },
+  {
+    "case_id": "real_estate-002",
+    "query_text": "Who is the landlord on the lease-renewal option discussed in the correspondence?",
+    "expected_output": "The landlord on the lease-renewal option is the counterparty named in the lease-renewal-option-with-landlord-discretion conversation; the option carries discretionary triggers held by that landlord.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_lease-renewal-option-with-landlord-discretion.md"
+    ],
+    "notes": "Keyword lookup on counterparty name."
+  },
+  {
+    "case_id": "real_estate-003",
+    "query_text": "What is the scope of the Miami carport-to-media-room conversion?",
+    "expected_output": "The Miami project converts an existing carport into an enclosed media room, with a window-and-door package, structural insulation, and HVAC tie-in, scoped in the carport conversion conversation.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "simple",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_converting-a-carport-to-enclosed-media-room-in-miami.md"
+    ],
+    "notes": "Single-document semantic lookup."
+  },
+  {
+    "case_id": "real_estate-004",
+    "query_text": "Which contractor is engaged for the Oakmont-Exuma scope-of-work and what is their construction-management role?",
+    "expected_output": "The Oakmont-Exuma scope-of-work is owned by Acme as the construction manager, with subcontractor selection ratified through the contractor directory. The construction-management combined candidate profile identifies the senior CM lead.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt",
+      "data/discovery-sample/construction/Construction_Management_Combined_Candidate_Profile.docx"
+    ],
+    "notes": "Multi-hop project -> CM -> person."
+  },
+  {
+    "case_id": "real_estate-005",
+    "query_text": "How do the lease-renewal terms affect the carport conversion's payback analysis?",
+    "expected_output": "The lease-renewal option is held at landlord discretion, which compresses the payback horizon for the carport conversion. The conversion economics assume the renewal is exercised; if denied, the residual leasehold value is below the conversion's depreciated cost.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_lease-renewal-option-with-landlord-discretion.md",
+      "data/discovery-sample/business/20260310_conversation_converting-a-carport-to-enclosed-media-room-in-miami.md"
+    ],
+    "notes": "Multi-hop: leasehold -> capital project -> payback."
+  },
+  {
+    "case_id": "real_estate-006",
+    "query_text": "Which projects are managed by the same construction-management lead?",
+    "expected_output": "The Cedar Cay development and the Oakmont-Exuma scope-of-work are managed by the same CM lead identified in the construction-management candidate profile, while the Miami carport conversion is delegated to a regional GC.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "multi_hop",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/construction/Construction_Management_Combined_Candidate_Profile.docx",
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Multi-hop project -> manager -> project."
+  },
+  {
+    "case_id": "real_estate-007",
+    "query_text": "How does Florida resale-certificate compliance interact with the Miami project?",
+    "expected_output": "Florida resale-certificate compliance applies to material purchases on the Miami carport conversion that are intended for taxable resale to the lessee. The compliance memo establishes the documentary chain that exempts pass-through materials from sales tax at the wholesale level.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_florida-resale-certificate-regulation-compliance.md",
+      "data/discovery-sample/business/20260310_conversation_converting-a-carport-to-enclosed-media-room-in-miami.md"
+    ],
+    "notes": "Multi-hop: compliance -> project -> material."
+  },
+  {
+    "case_id": "real_estate-008",
+    "query_text": "How many real-estate projects are currently active across the portfolio?",
+    "expected_output": "Three real-estate projects are currently active: the Cedar Cay development, the Oakmont-Exuma scope-of-work, and the Miami carport-to-media-room conversion.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Aggregate count of Project vertices."
+  },
+  {
+    "case_id": "real_estate-009",
+    "query_text": "What is the total scoped value across Acme-managed real-estate projects?",
+    "expected_output": "The total scoped value across Acme-managed real-estate projects equals the sum of the Cedar Cay development budget and the Oakmont-Exuma scope-of-work commitment, both held under the real-estate holdings LLC.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Aggregate budget sum."
+  },
+  {
+    "case_id": "real_estate-010",
+    "query_text": "Summarize the Cedar Cay development thesis.",
+    "expected_output": "The Cedar Cay thesis is to develop a low-density resort-residential community in the Exumas, anchored by Oakmont-branded hospitality with phased private-residence releases. Capital is structured to align preconstruction equity with post-stabilization debt refinancing.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "semantic",
+    "ontology_module": "real_estate",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Semantic project summary."
+  }
+]

@@ -1,0 +1,694 @@
+<!-- image -->
+
+## MAC-ONL 1105 -2263-15240 College Algebra Spring 2026
+
+Modality: Online | Credit Hours: 3.00
+
+In this course, students will develop problem solving skills, critical thinking, computational proficiency, and contextual fluency through the study of equations, functions, and their graphs. Emphasis will be placed on quadratic, exponential, and logarithmic functions. Topics will include solving equations and inequalities, definition and properties of a function, domain and range, transformations of graphs, operations on functions, composite and inverse functions, basic polynomial and rational functions, exponential and logarithmic functions, and applications. Student learning outcomes: students will solve an equation or an inequality using an appropriate technique; students will define and describe functions, their properties, and graphs; students will manipulate functions to simplify expressions and find new functions; students will use transformations to write an equation for a function and to graph a function; and students will model and solve real world problems using functions. Prerequisite: MAT 1033 with a grade of 'C' or better or satisfactory score/grade on an approved placement method. Computational Course.
+
+## Instructor Information
+
+Laura Galindo
+
+Email:
+
+lgalindo@mdc.edu
+
+Office Location:
+
+West Campus
+
+Additional Information
+
+You can view full-time faculty office hours using the link below:
+
+mdcwap.mdc.edu/facultyschedule/
+
+## Updated Shark Pack Program Information
+
+Miami Dade College (MDC) continues to offer the MDC-Follett Shark Pack Program, designed to support our textbook affordability efforts and reduce the cost of instructional materials for students. MDC has expanded Shark Pack to cover nearly all credit courses at the College. However, please review your syllabus for textbook information, as some courses may not require textbooks or may use OER materials.
+
+For further details about the Shark Pack Program, visit the MDC Shark Pack website.
+
+## Shark Pack Textbook
+
+NOTE: This course is part of the MDC Shark Pack Program. For technical assistance with accessing Shark Pack textbook(s) and learning material(s), please contact us at MDCSharkPack@follet.com. For more information or to op-out of this cost-saving program, please visit www.mdc.edu/SharkPack.
+
+<!-- image -->
+
+## Title: College Algebra (ALEKS 360) 18 Week Access w/ eBook
+
+Subtitle: Once in ALEKS, you will have access to videos, homework problems, and tutorials. The etextbook can be accessed from this site.
+
+Edition:
+
+3rd
+
+Authors:
+
+Julie Miller and Donna Gerken
+
+ISBN:
+
+9781264920723
+
+Publication Date:
+
+2023
+
+Publisher:
+
+Mc Graw Hill
+
+## Course Competencies and Learning Outcomes
+
+## Miami Dade College's Learning Outcomes
+
+This course addresses the following MDC learning outcomes:
+
+Learning Outcome #1: Communicate effectively using listening, speaking, reading, and writing skills.
+
+Learning Outcome #2: Use quantitative analytical skills to evaluate and process numerical data.
+
+Learning Outcome #3: Solve problems using critical and creative thinking and scientific reasoning.
+
+Learning Outcome #4: Formulate strategies to locate, evaluate, and apply information.
+
+Learning Outcome #8: Use computer and emerging technologies effectively.
+
+## Course Competencies
+
+Upon completion of this course, the student will be able to:
+
+Competency 1: Demonstrate knowledge of absolute value equations and inequalities by:
+
+- a. Solving absolute value equations
+- b. Solving absolute value inequalities
+
+Competency 2: Demonstrate knowledge of complex numbers by:
+
+- a. Simplifying radicals with negative radicands by using the definition of i
+- b. Simplifying powers of i
+- c. Adding, subtracting, multiplying and dividing complex numbers
+
+Competency 3: Demonstrate knowledge of functions, from a numerical, graphical, verbal and analytic perspective by:
+
+- a. Distinguishing if a given relation is a function
+- b. Evaluating and using functional notation
+- c. Using the vertical line test to determine if a graph represents a function
+- d. Identifying and finding the domain and range of relations and functions
+- e. Performing operations on functions
+- f. Forming function compositions
+- g. Finding the inverse of a function
+- h. Graphing functions, including absolute value, radical and power functions with and without transformations
+- i. Graphing the inverse of a function
+- j. Analyzing and classifying the symmetry of functions
+- k. Defining, evaluating and graphing basic piecewise-defined functions
+
+## Competency 4: Demonstrate knowledge of quadratic equations and functions by:
+
+- a. Solving quadratic equations and equations quadratic in form using any available method
+- b. Using quadratic equations and their solutions to answer modeling questions
+- c. Using the discriminant to identify the types of solutions for quadratic equations
+- d. Graphing quadratic functions and identifying the vertex, x-intercept, yintercept and the axis of symmetry of the graph
+- e. Finding the maximum or minimum value of a quadratic function in applications
+
+## Competency 5: Demonstrate knowledge of systems of linear equations and
+
+## inequalities by:
+
+- a. Solving systems of linear equations in two variables using Substitution and Addition (also known as Elimination) methods
+- b. Solving systems of linear equations in three variables
+- c. Solving systems of linear inequalities
+- d. Solving applications and modeling using systems of linear equations and inequalities
+
+## Competency 6: Demonstrate knowledge of exponential and logarithmic functions by:
+
+- a. Graphing exponential and logarithmic functions with and without transformations
+- b. Identifying the domain and range of an exponential or logarithmic function
+- c. Applying properties of logarithms to expand and condense logarithmic expressions
+- d. Solving exponential and logarithmic equations
+- e. Applying modeling techniques to solve problems of exponential growth and decay
+
+W1
+
+W2
+
+W3
+
+W4
+
+1
+
+8
+
+15
+
+22
+
+29
+
+Sun
+
+2
+
+9
+
+16
+
+23
+
+30
+
+HW Unit 2
+
+is due
+
+Mon
+
+3
+
+10
+
+17
+
+24
+
+31
+
+Unit 2
+
+Test
+
+Tue
+
+25
+
+W5
+
+April 2026 / May 2026
+
+Sun
+
+Mon
+
+Midterm Window
+
+Tue
+
+Wed
+
+Thu
+
+1
+
+Fri
+
+2
+
+Midterm Window
+
+## Competency 7: Demonstrate knowledge of polynomial and rational HW Unit 1 Unit 1 WG
+
+is due functions and inequalities by:
+
+W7
+
+- a. Graphing polynomial functions 26 27 28 19 20
+- b. Graphing rational functions
+
+26
+
+27
+
+13
+
+14
+
+HW Unit 3
+
+is due
+
+21
+
+28
+
+15
+
+Unit 3
+
+Test
+
+22
+
+HW Unit 4
+
+is due
+
+29
+
+- c. Determining domain of rational functions Final Window
+- d. Solving polynomial and rational inequalities and graphing their solution set
+
+## Competency 8: Demonstrate knowledge of equations in two variables by:
+
+- a. Recognizing and graphing equations that represent circles
+- b. Writing the equation of the circle given the center and radius
+- c. Determining the distance between two points and midpoint coordinates
+
+## Optional Course Materials
+
+Scientific Calculator , not a graphing calculator. Examples: TI30x, TI30xa
+
+Please refer to the Textbook Information page on the MDC Online website for specific information on the college bookstores and procedures for ordering textbooks online.
+
+## Tentative Course Schedule
+
+<!-- image -->
+
+College Algebra -15240
+
+March 2026
+
+Wed
+
+4
+
+6
+
+Fri
+
+7
+
+Sat
+
+16
+
+23
+
+Unit 4
+
+Test
+
+30
+
+17
+
+24
+
+1
+
+18
+
+25
+
+Final Window
+
+2
+
+Sat
+
+## Technology &amp; Technical Skills Requirement
+
+## Technology Requirements
+
+Technology is essential for enrollment with MDC Online courses. In order to be successful in this course, you must have:
+
+## Technical Skills:
+
+- Digital Devices : Comfort with using a computer, tablet, or smartphone, and the ability to navigate an operating system, download files, use email to send and receive messages, troubleshoot common issues like audio, video, and Internet connectivity problems.
+- Camera and Microphone Setup : Ability to set up and use a camera and microphone for video conferencing and proctoring purposes. Ensure that both headset/microphone are working properly and positioned correctly to participate in web-conferencing activities through Canvas; a webcam is mandatory.
+- Software Navigation : Proficiency downloading and using software. Microsoft Office applications such as Word, Excel, and PowerPoint are standard for MDC Online courses. You can get Microsoft Office 365 for free from the MDC Microsoft Office License . Knowledge and experience in using any learning management system (LMS), including Canvas, and exam platforms, including Honorlock.
+- Internet Connectivity : Ensuring a stable internet connection to avoid interruptions. This may include troubleshooting Wi-Fi, having
+
+a backup plan (like using mobile data), and making sure there is enough bandwidth to stream video and upload/download content without issues.
+
+- Please refer to the LMS Requirements and Plugin  Information at the MDC Online website. Mozilla Firefox  or Google Chrome are the recommended browsers.
+- Due to the necessity of technology in MDC Online Courses, you must have a backup plan for using an alternative computer with Internet access in case of problems with your personal computer. If you live in the South Florida area, you may use the computer courtyards  located on MDC campuses.
+
+## Sign up for the MDC Online Student Orientation to:
+
+- Better understand what it takes to become a successful online student
+- Learn how to set up your computer and navigate through Canvas our learning management system (LMS)
+- Discover the resources available to support you
+- Learn general information about MDC Online courses and programs
+
+## Notes:
+
+- If you have a technology problem that affects your ability to access your online course, please notify your instructor immediately. If you can access other Internet sites but cannot access your online course, you need to contact the MDC Online Help Desk at 305-
+
+237-3800 to seek help. You can also chat with a live agent from Canvas 24/7 .
+
+- If you have no Internet access at all, it is not an MDC Online / online course issue. Please be aware that the MDC Online's Help Desk does not cover problems you may experience with your computer hardware, installation of software, Internet connection, or other technical problems that may require a technician or intervention from your Internet Service Provider.
+
+## Privacy and Accessibility Policies
+
+Please review the links below for the course vendor's privacy and accessibility policies:
+
+- Adobe - Privacy  and Accessibility
+- Canvas - Privacy and Accessibility
+- Google/YouTube - Privacy  and Accessibility
+- Honorlock - Privacy  and Accessibility
+- McGraw Hill - Privacy and Accessibility
+
+## Assignment Schedule
+
+| Due Date   | Assignment                    | Assignment Type   |   Points |
+|------------|-------------------------------|-------------------|----------|
+|            | MAC1105 - Course (Q&A)        | Discussion        |        0 |
+|            | STEP 5 - Meet Your Classmates | Discussion        |        0 |
+
+| Due Date   | Assignment                     | Assignment Type   |   Points |
+|------------|--------------------------------|-------------------|----------|
+|            | Unit 1 - Discussion            | Discussion        |      100 |
+|            | Unit 1 - Questions and Answers | Discussion        |        0 |
+|            | Unit 2 - Discussion            | Discussion        |      100 |
+|            | Unit 2 - Questions and Answers | Discussion        |        0 |
+|            | Unit 3 - Discussion            | Discussion        |      100 |
+|            | Unit 3 - Questions and Answers | Discussion        |        0 |
+|            | Unit 4 - Discussion            | Discussion        |      100 |
+|            | Unit 4 - Questions and Answers | Discussion        |        0 |
+|            | Final Exam Review              | Quiz              |        0 |
+|            | Honorlock Practice Assessment  | Quiz              |        0 |
+|            | Midterm Exam Review            | Quiz              |        0 |
+| 1/31/25    | Review Unit 1 Test             | Assignment        |      100 |
+| 1/31/25    | Review Unit 2 Test             | Assignment        |      100 |
+| 1/31/25    | Review Unit 3 Test             | Assignment        |      100 |
+| 1/31/25    | Review Unit 4 Test             | Assignment        |      100 |
+| 1/31/25    | Unit 1 - Section 1.5           | Assignment        |      100 |
+| 1/31/25    | Unit 1 - Section 1.6           | Assignment        |      100 |
+| 1/31/25    | Unit 1 - Section 1.7           | Assignment        |      100 |
+| 1/31/25    | Unit 1 - Section 2.1           | Assignment        |      100 |
+
+| Due Date   | Assignment                      | Assignment Type   |   Points |
+|------------|---------------------------------|-------------------|----------|
+| 1/31/25    | Unit 1 - Section 2.2            | Assignment        |      100 |
+| 1/31/25    | Unit 1 Section 1.3              | Assignment        |      100 |
+| 1/31/25    | Unit 1 Test                     | Assignment        |       10 |
+| 1/31/25    | Unit 1- Section 1.4             | Assignment        |      100 |
+| 1/31/25    | Unit 1- Section R               | Assignment        |      100 |
+| 1/31/25    | Unit 2 - Section 2.5            | Assignment        |      100 |
+| 1/31/25    | Unit 2 - Section 2.7            | Assignment        |      100 |
+| 1/31/25    | Unit 2 - Section 2.8            | Assignment        |      100 |
+| 1/31/25    | Unit 2 -Section 2.6             | Assignment        |      100 |
+| 1/31/25    | Unit 2 Test                     | Assignment        |       10 |
+| 1/31/25    | Unit 2- Section 2.3             | Assignment        |      100 |
+| 1/31/25    | Unit 2- Section 2.4             | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.2 (Optional) | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.3            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.4            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.5            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.6            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 3.7            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 5.1            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 5.2            | Assignment        |      100 |
+| 1/31/25    | Unit 3 - Section 5.5            | Assignment        |      100 |
+
+| Due Date   | Assignment              | Assignment Type   |   Points |
+|------------|-------------------------|-------------------|----------|
+| 1/31/25    | Unit 3 Test             | Assignment        |       10 |
+| 1/31/25    | Unit 3-Section 3.1      | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.1    | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.2    | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.3    | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.4    | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.5    | Assignment        |      100 |
+| 1/31/25    | Unit 4 - Section 4.6    | Assignment        |      100 |
+| 1/31/25    | Unit 4 Test             | Assignment        |       10 |
+| 3/12/26    | 5 Unit 1 - Section 1.7  | Assignment        |      100 |
+| 3/12/26    | 6 Unit 1 - Section 2.1  | Assignment        |      100 |
+| 3/12/26    | 7 Unit 1 - Section 2.2  | Assignment        |      100 |
+| 3/13/26    | 9 Unit 1 Test           | Assignment        |      100 |
+| 3/15/26    | 1 Unit 1- Section R     | Assignment        |      100 |
+| 3/15/26    | 2 Unit 1- Section 1.4   | Assignment        |      100 |
+| 3/15/26    | 3 Unit 1 - Section 1.5  | Assignment        |      100 |
+| 3/15/26    | 4 Unit 1 - Section 1.6  | Assignment        |      100 |
+| 3/30/26    | 10 Unit 2- Section 2.3  | Assignment        |      100 |
+| 3/30/26    | 11 Unit 2- Section 2.4  | Assignment        |      100 |
+| 3/30/26    | 12 Unit 2 - Section 2.5 | Assignment        |      100 |
+| 3/30/26    | 13 Unit 2 -Section 2.6  | Assignment        |      100 |
+| 3/30/26    | 14 Unit 2 - Section 2.7 | Assignment        |      100 |
+
+| Due Date   | Assignment              | Assignment Type   |   Points |
+|------------|-------------------------|-------------------|----------|
+| 3/30/26    | 15 Unit 2 - Section 2.8 | Assignment        |      100 |
+| 3/31/26    | 17 Unit 2 Test          | Assignment        |      100 |
+| 4/14/26    | 18 Unit 3-Section 3.1   | Assignment        |      100 |
+| 4/14/26    | 19 Unit 3 - Section 3.2 | Assignment        |      100 |
+| 4/14/26    | 20 Unit 3 - Section 3.3 | Assignment        |      100 |
+| 4/14/26    | 21 Unit 3 - Section 3.4 | Assignment        |      100 |
+| 4/14/26    | 22 Unit 3 - Section 3.5 | Assignment        |      100 |
+| 4/14/26    | 23 Unit 3 - Section 3.6 | Assignment        |      100 |
+| 4/14/26    | 24 Unit 3 - Section 3.7 | Assignment        |      100 |
+| 4/14/26    | 25 Unit 3 - Section 5.1 | Assignment        |      100 |
+| 4/14/26    | 26 Unit 3 - Section 5.2 | Assignment        |      100 |
+| 4/14/26    | 27 Unit 3 - Section 5.5 | Assignment        |      100 |
+| 4/15/26    | 29 Unit 3 Test          | Assignment        |      100 |
+| 4/22/26    | 30 Unit 4 - Section 4.1 | Assignment        |      100 |
+| 4/22/26    | 31 Unit 4 - Section 4.2 | Assignment        |      100 |
+| 4/22/26    | 32 Unit 4 - Section 4.3 | Assignment        |      100 |
+| 4/22/26    | 33 Unit 4 - Section 4.4 | Assignment        |      100 |
+| 4/22/26    | 34 Unit 4 - Section 4.5 | Assignment        |      100 |
+| 4/22/26    | 35 Unit 4 - Section 4.6 | Assignment        |      100 |
+| 4/23/26    | 37 Unit 4 Test          | Assignment        |      100 |
+| 4/28/26    | 16 Review Unit 2 Test   | Assignment        |      100 |
+| 4/28/26    | 28 Review Unit 3 Test   | Assignment        |      100 |
+
+| Due Date   | Assignment            | Assignment Type   |   Points |
+|------------|-----------------------|-------------------|----------|
+| 4/28/26    | 36 Review Unit 4 Test | Assignment        |      100 |
+| 4/28/26    | 8 Review Unit 1 Test  | Assignment        |      100 |
+| 4/28/26    | Final Exam Makeup     | Assignment        |      100 |
+| 4/28/26    | Midterm Makeup        | Assignment        |      100 |
+
+## MDC Grade Scale
+
+Miami Dade College uses a standard grading scale based on letter grades.
+
+<!-- image -->
+
+<!-- image -->
+
+<!-- image -->
+
+| Letter Grade   | Percentage   |
+|----------------|--------------|
+| A              | 90 - 100%    |
+| B              | 80 - 89%     |
+| C              | 70 - 79%     |
+| D              | 60 - 69%     |
+| F              | 0 - 59%      |
+
+## Course Grading Policy and Assessment Methods
+
+## Grading Policy
+
+In this course, grading is based on percentages.
+
+## Course Requirements | Percentage
+
+| Homework Assignments (ALEKS)   | 10%   |
+|--------------------------------|-------|
+| Class Discussions (Canvas)     | 10%   |
+| Unit Tests (ALEKS)             | 20%   |
+
+| Proctored Midterm Exam (Canvas)   | 30%   |
+|-----------------------------------|-------|
+| Proctored Final Exam (Canvas)     | 30%   |
+| Total                             | 100%  |
+
+## Course Outline
+
+This course is organized into four (4) units.
+
+Unit 1 -Equations, Problems Solving and Circles
+
+- Chapter R - Review of Prerequisites
+- Section 1.3 - Complex Numbers
+- Section 1.4 - Quadratic Equations
+- Section 1.5 - Applications of Quadratic Equations
+- Section 1.6 - More Equation and Applications
+- Section 1.7 - Absolute Value Inequalities
+- Section 2.1 - Distance and Midpoint Formula
+- Section 2.2 - Circles
+
+Unit 2 -Functions
+
+- Section 2.3 - Functions and Relations
+- Section 2.4 - Linear Equations in Two Variables
+
+- Section 2.5 - Applications of Linear Equations
+- Section 2.6 - Transformation of Graphs
+- Section 2.7 - Analyzing Graphs and Piecewise-Defined Functions
+- Section 2.8 - Algebra of Functions and Composition
+
+## Unit 3 -Polynomial and Rational Functions, Systems of Equations
+
+- Section 3.1 - Quadratic Functions and Applications
+- Section 3.2 - Introduction to Polynomial Functions
+- Section 3.3 - Division of Polynomial
+- Section 3.5 - Rational Functions
+- Section 3.6 - Polynomial and Rational Inequalities
+- Section 5.1 - Systems of Linear Equations in Two Variables
+- Section 5.2 - Systems of Equations in Three Variables
+- Section 5.5 - Inequalities and Systems of Inequalities in Two Variables
+
+## Unit 4 -Exponential and Logarithmic Functions
+
+- Section 4.1 - Inverse Functions
+- Section 4.2 - Exponential Functions
+
+- Section 4.3 - Logarithmic Functions
+- Section 4.4 - Properties of Logarithms
+- Section 4.5 - Exponential and Logarithmic Equations
+- Section 4.6 - Modeling with Exponential and Logarithmic Equations
+
+## Jump to MENU
+
+## Course Work Requirements
+
+To successfully complete this course, you need to spend at least an average of 5 hours per week on the course, which includes readings, postings, tests, exams, etc. Set up a weekly time schedule that allows you sufficient time to complete the assigned course work by the required due dates. Plan to check-in and complete assignments at least three times a week .
+
+I will do my best to provide feedback that is timely and constructive, allowing you to celebrate successes, continue learning, and improve when necessary.
+
+I will offer feedback in a few different ways:
+
+- Canvas Grades . In Grades, by clicking on the icon you can read individualized comments and suggestions that you can review. From here, you can add comments to ask questions or demonstrate new learning.
+- Discussion Posts . I plan to participate in course discussions by asking guiding questions, sharing resources, and summarizing the conversation at the end of the module.
+- Announcements. Sometimes it may be helpful for me to share additional information with the whole class, such as changes in the calendar, reminders and instructions for proctored exams, and to celebrate successes.
+
+Students who don't take the Proctored Midterm can't pass the course and thus maybe dropped by the instructor.
+
+Please review MDC Online Attendance Requirements .
+
+Do not procrastinate! Turn your work in early or by the due date.
+
+## Homework Assignments (10%)
+
+Complete online homework in ALEKS. The average of all the homework sections will account for 10% of the final grade.
+
+## Class Discussion (10%)
+
+Class participation is required through the discussion forums in Canvas. The average of the 4 discussions will account for 10% of
+
+the final grade.
+
+## Tests (20%)
+
+## Practice Tests (not graded)
+
+Practice tests will be available in ALEKS for each unit prior to the graded Unit Test. You can take the practice test as many times as you wish. The practice tests do not count towards your overall class grade.
+
+## Unit Tests (graded)
+
+There are four graded Unit Tests (not proctored) located in ALEKS. The average of the four Unit Tests will account for 20% of the final grade.
+
+- Unit 1 - Test
+- Unit 2 - Test
+- Unit 3 - Test
+- Unit 4 - Test
+
+NOTE: If either Unit 1 - Test or Unit 2 - Test is missed, the grade of the Midterm Exam will replace it. If one of Unit 3 - Test or Unit Test 4 is missed, the Final Exam grade will replace it.
+
+## Proctored Exams (60%):
+
+There are two (2) proctored exams in this course. You must pass both with a grade of 60% or higher. NO EXCEPTIONS.
+
+1. Proctored Midterm Exam. The grade you earn on the Proctored Midterm will account for 30% of the final grade.
+2. Proctored Final Exam. The grade you earn on the Proctored Final Exam will account for 30% of the final grade.
+
+Both the Proctored Exams must be completed within the testing window established by the MDC Online. Please check the course calendar to find the testing dates for the proctored exam(s) required in this course. In case the test is administered outside the testing window, the student must take it in person in an MDC testing center.
+
+Students currently have three options when taking a proctored assessment:
+
+1. MDC Testing Center(s)
+2. Remote Proctors and
+3. Technology-Supported Proctoring (Honorlock)
+
+Please visit the MDC Online Testing Information  page for very important information about proctored testing.
+
+## Extra Credit:
+
+There is no extra credit given in this course.
+
+## Late and Makeup Policies:
+
+No make-ups are allowed for proctored exams, assignments or tests.
+
+## Incomplete Grades:
+
+An Incomplete is given only where extenuating circumstances exist, such as documented medical problems or a death in the family, and is issued solely at the discretion of the instructor. If the instructor agrees to grant an Incomplete, a written agreement must be completed between the instructor and the student, specifying the coursework to be completed, in what manner, and by when. Failure to fulfill the terms of the contract by the end of the next major term will result in an "F" for the course. A student may not remove an Incomplete by registering in a subsequent term to re-take the course. For more information on Incomplete grades, please refer to the Students' Rights and Responsibilities .
+
+## Services for Students with Disabilities - ACCESS:
+
+Students with a documented disability are encouraged to contact the ACCESS - Disability Services Department  in advance for information and assistance. If you currently are an ACCESS
+
+student, please have the ACCESS coordinator email the instructor a copy of your accommodations by the end of Week 2.
+
+## Attendance Policy
+
+Please review MDC Online Attendance Requirements.
+
+## Miami Dade College Policies
+
+## College Catalog
+
+Incomplete Grade Procedure
+
+Manual of Procedure: Granting and Removing of Incomplete Grades
+
+Student's Rights and Responsibilities
+
+Manual of Procedure: Student Rights and Responsibilities MDC Student's Rights and Responsibilities Resource Website
+
+## ACCESS Disability Services
+
+## A Comprehensive Center for Exceptional Students' Services (ACCESS) Services for Students With Disabilities
+
+Miami Dade College provides support services and accommodations to assist students with documented disabilities achieve their education goals. You may learn about these services and eligibility by contacting your campus's ACCESS office. No retroactive accommodations will be provided.
+
+For more information, please visit Miami Dade College Accessibility Statement, procedure 4055.
+
+## Student Support Services and Resources
+
+- Student Resources
+- Tutoring Labs and Technology - Learning Resources
+- Virtual Tutoring through Learning Resources or Free Online Tutoring through Brainfuse inside of your Canvas course
+- Advisement
+- Password and Login Technical Support
+- Technical Support for MDC Live and MDC Online Courses
+- SMART Plan
+
+## MDC Online Statement
+
+There will be a distance learning fee assessed and possibly remote proctoring fees for this course. Please see Miami Dade's Tuition &amp; Fees page for more information.
+
+## Additional Support Services and Resources
+
+- Public Safety - Services
+- Hurricane and Other Natural Disasters: In the event of a hurricane or other disaster, the class follows the schedule established by the College for campus-based courses. Please visit the MDC website or call the MDC Hotline (305-237-7500) for situation updates.
+
+## Academic Integrity: AI Use
+
+AI tools, including ChatGPT and Copilot, can be valuable resources for learning, brainstorming, and gaining a better understanding of course materials. However, these tools should not be used to complete in-class assignments or discussion tasks unless your instructor or the assignment specifically permits it. Assignments will be checked for AI-generated content. If an AI assessment
+
+suggests possible unauthorized use or negative results, the faculty member may decide to take appropriate further action.
+
+## MDC Online Honorlock Exam Proctoring
+
+## What is Honorlock?
+
+Honorlock is an online exam proctoring service that helps maintain academic integrity during remote exams. Honorlock operates 24/7 without requiring appointments. To use Honorlock, MDC Online students need a stable and reliable internet connection, a computer with the Google Chrome browser and the Honorlock extension installed, a webcam, a microphone, and a valid photo ID.
+
+## How It Works
+
+Honorlock monitors exam sessions using AI and live U.S.-based proctors. If issues are detected, a proctor intervenes via chat. Exams are accessed through Canvas.
+
+| Preparation and Requirements   | Valid photo ID. Google Chrome with the Honorlock extension. Webcam and microphone. Conduct a mandatory 360-degree room scan. Ensure proper lighting and remain fully visible on camera. No headphones, phones, notes, or other devices are allowed. No breaks are permitted once the exam begins. A quiet, private environment is required (no beds/sofas).   |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Academic Integrity             | All exams must be taken independently. Accessing course content, notes, or other materials is prohibited . Violations (e.g., missing room scan, suspicious behavior, using unauthorized materials) will result in a zero on the exam and up to course failure . All sessions are recorded and flagged activity will be reviewed by your instructor.           |
+
+| Support              | Honorlock offers 24/7 live support. You can find additional resources and support by visiting the MDC Online Proctored Exam Hub.                                                                                                                                                       |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Important Notes      | No makeups or exceptions for missed exams. Ensure all personal and technical preparations are completed in advance. Clear your calendar for remote exams.                                                                                                                              |
+| Additional Resources | Honorlock System Check Honorlock Minimum System Requirements Honorlock HonorPrep Guided Tour How to Use Honorlock (Test Takers) Honorlock Best Practices for Test Takers Honorlock Toolbar Overview for Test Takers Honorlock FAQs for Test Takers MDC Testing and Assessment Website. |

@@ -1,0 +1,35 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_kind": "segmented",
+      "name": "Single-founder weak segment hypothesis",
+      "segment_count": 1,
+      "segments": [
+        {
+          "name": "Founder workspace",
+          "description": "All documents traceable to a single founder operator.",
+          "representative_keywords": ["founder", "personal", "draft"],
+          "representative_entities": ["Founder Holdings"]
+        }
+      ],
+      "agreement_summary": "Layer 1 is shallow with very few documents; Layer 2 produced one cluster only.",
+      "divergence_summary": "Layer 3 lacks enough entities to support meaningful community detection.",
+      "confidence_band": "low",
+      "narrative_argument_for": "A founder-stage org commonly presents as one cohesive workspace.",
+      "narrative_argument_against": "A single segment is barely distinguishable from the undifferentiated whole."
+    },
+    {
+      "hypothesis_kind": "null",
+      "name": "Null hypothesis: undifferentiated whole",
+      "narrative_argument_for": "Corpus is small (<50 docs); no statistically meaningful partition is recoverable.",
+      "narrative_argument_against": "Even a small corpus may show one informal segment if leadership is divided.",
+      "confidence_band": "high"
+    }
+  ],
+  "synthesis_metadata": {
+    "model": "qwen2.5:7b-instruct",
+    "low_stability_flag": true,
+    "layer3_mean_pairwise_ari": 0.30,
+    "generated_at": "2026-05-07T12:00:00+00:00"
+  }
+}

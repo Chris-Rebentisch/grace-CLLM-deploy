@@ -1,0 +1,65 @@
+# Signal Pipeline configuration (Chunk 32, D240/D245).
+# Operator knobs for the six signal detectors. The defaults match the
+# Pydantic model in src/analytics/signal_pipeline/config.py — edits here
+# override.
+
+prometheus_url: http://127.0.0.1:9090
+
+# Global Mann-Kendall settings (used by Signals D and F per D245).
+mann_kendall_min_points: 10
+mann_kendall_alpha: 0.05
+
+signal_a:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1
+
+signal_b:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1
+  cooccur_in_chunk: true
+  cooccur_in_sentence: true
+
+signal_c:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1
+  # ``kind`` label values from src/extraction/constraint_validator.py.
+  # Signal C intentionally excludes ``invalid_relationship_type`` (that
+  # surface lives in Signal E's domain/range proxy).
+  kind_filter:
+    - invalid_entity_type
+    - schema_version_mismatch
+
+signal_d:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1
+
+signal_e:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1
+  # When a future chunk lands ``misplaced_property`` rule, append it
+  # here without code changes.
+  kind_filter:
+    - domain_violation
+    - range_violation
+
+signal_f:
+  enabled: true
+  emit_threshold: 0.0
+  sigma_multiplier: 3.0
+  baseline_window_days: 14
+  current_window_days: 1

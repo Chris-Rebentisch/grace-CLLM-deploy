@@ -1,0 +1,93 @@
+organization_domains:
+- acme.com
+- test.org
+profile_minimum_emails_to_generate: 50
+retention_versions: 4
+directness_batch_size: 20
+signature_sample_count: 3
+archive_minimum_new_correspondences: 100
+archive_tier_enabled: false
+dpia_validity_days: 365
+role_to_category_map:
+  ceo: executive_superior
+  cfo: executive_superior
+  coo: executive_superior
+  cto: executive_superior
+  director: direct_manager
+  manager: direct_manager
+  vp: executive_superior
+  partner: peer_cross_department
+  associate: peer_same_department
+  intern: new_hire_onboarding
+  vendor: external_vendor
+  client: external_client
+  counsel: legal_counsel
+title_to_category_map:
+  chief executive officer: executive_superior
+  chief financial officer: executive_superior
+  chief operating officer: executive_superior
+  chief technology officer: executive_superior
+  president: executive_superior
+  vice president: executive_superior
+  director: direct_manager
+  manager: direct_manager
+  senior associate: peer_same_department
+  associate: peer_same_department
+  analyst: peer_same_department
+  intern: new_hire_onboarding
+  counsel: legal_counsel
+  attorney: legal_counsel
+  general counsel: legal_counsel
+  vendor manager: external_vendor
+  account manager: external_client
+formality_thresholds:
+  high: 60.0
+  low: 40.0
+vocabulary_complexity_thresholds:
+  high: 0.8
+  low: 0.5
+hedging_lexicon:
+- perhaps
+- maybe
+- might
+- may
+- could
+- would
+- should
+- possibly
+- probably
+- presumably
+- seemingly
+- apparently
+- somewhat
+- rather
+- fairly
+- relatively
+- it seems
+- it appears
+- I think
+- I believe
+- I suppose
+- I would say
+- I would expect
+- I would generally expect
+- I hesitate
+- I'm not sure
+- I am not certain
+- arguably
+- in my opinion
+- to some extent
+- to a degree
+- more or less
+- if I recall
+- as far as I know
+- tend to
+- generally
+- typically
+- in general
+synthesis_provider_override: null
+baseline_corpus_source: org_corpus
+export_default_dir: data/voice-profiles
+redaction_enabled: true
+redaction_ner_provider: local_only
+voice_card_core_word_limit: 400

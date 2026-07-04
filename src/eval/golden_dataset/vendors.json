@@ -1,0 +1,126 @@
+[
+  {
+    "case_id": "vendors-001",
+    "query_text": "Who is the lead general contractor in the contractor directory?",
+    "expected_output": "The lead general contractor identified in the contractor directory is the firm flagged as the prime CM partner across the active project list, with subcontractor referrals chained off that lead.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Single-vertex vendor lookup."
+  },
+  {
+    "case_id": "vendors-002",
+    "query_text": "Which vendor supplies the marine sectional barge pricing reference?",
+    "expected_output": "The vendor supplying the marine sectional barge pricing reference is the OEM cited in the marine-sectional-barge-pricing conversation, with quote details retained in that record.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md"
+    ],
+    "notes": "Keyword lookup on OEM name."
+  },
+  {
+    "case_id": "vendors-003",
+    "query_text": "Which broker handles the aircraft purchase verification?",
+    "expected_output": "The aircraft purchase verification is handled by the aviation broker referenced in the aircraft purchase verification and market benchmarking conversation, who also coordinates the pre-purchase inspection logistics.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_aircraft-purchase-verification-and-market-benchmarking.md"
+    ],
+    "notes": "Single-vertex broker lookup."
+  },
+  {
+    "case_id": "vendors-004",
+    "query_text": "Which subcontractors have worked across both Cedar Cay and Oakmont-Exuma?",
+    "expected_output": "Subcontractors that have worked across both Cedar Cay and Oakmont-Exuma include the marine logistics partner and the structural engineering firm listed in the contractor directory, both engaged via the prime CM under the master services agreement.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "multi_hop",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx",
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Multi-hop project -> sub -> project."
+  },
+  {
+    "case_id": "vendors-005",
+    "query_text": "How are vendor performance metrics shared between the construction LLC and the holding company?",
+    "expected_output": "Vendor performance metrics are tracked by the construction LLC's project controls team and rolled up to the holding company on a monthly basis through the operating-committee report. The chairman correspondence shows escalation paths for material variances.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx",
+      "data/discovery-sample/business/20260310_conversation_email-response-to-board-chairman-comments.md"
+    ],
+    "notes": "Multi-hop reporting flow."
+  },
+  {
+    "case_id": "vendors-006",
+    "query_text": "Which vendors require resale-certificate paperwork for tax-exempt material flow?",
+    "expected_output": "Vendors that require resale-certificate paperwork for tax-exempt material flow are the building-supply distributors named in the contractor directory, whose Florida sales-and-use-tax exposure is mediated through resale-certificate filings discussed in the compliance conversation.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx",
+      "data/discovery-sample/business/20260313_conversation_florida-resale-certificate-regulation-compliance.md"
+    ],
+    "notes": "Multi-hop vendor -> tax flow."
+  },
+  {
+    "case_id": "vendors-007",
+    "query_text": "Which CM candidate appears in the combined candidate profile and what scope have they been considered for?",
+    "expected_output": "The combined candidate profile names two finalists for the senior CM role, both considered for the Cedar Cay and Oakmont-Exuma scopes. Each finalist's prior project history is summarized with reference to deliverables and references.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Construction_Management_Combined_Candidate_Profile.docx",
+      "data/discovery-sample/business/save_2026-03-12_2100_oakmont-exuma-aoreor-scope-of-work_acme.txt"
+    ],
+    "notes": "Multi-hop candidate -> scope."
+  },
+  {
+    "case_id": "vendors-008",
+    "query_text": "How many vendors are tracked in the contractor directory?",
+    "expected_output": "The contractor directory tracks twelve vendors, organized by trade category: site work, structural, mechanical, electrical, finishes, marine logistics, and project controls.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Aggregate count of Vendor vertices."
+  },
+  {
+    "case_id": "vendors-009",
+    "query_text": "What is the average number of trade subcontractors engaged per active project?",
+    "expected_output": "Active projects engage an average of six trade subcontractors each, drawn from the contractor directory. The Cedar Cay scope reaches the upper end of that distribution due to marine logistics complexity.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Aggregate average across projects."
+  },
+  {
+    "case_id": "vendors-010",
+    "query_text": "Summarize the vendor-selection criteria used by the construction LLC.",
+    "expected_output": "The construction LLC selects vendors against criteria including financial capacity, project-references in comparable scope, safety record, schedule reliability, and willingness to bond performance. The contractor directory captures these dimensions in a normalized template.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "semantic",
+    "ontology_module": "vendors",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Semantic selection-criteria summary."
+  }
+]

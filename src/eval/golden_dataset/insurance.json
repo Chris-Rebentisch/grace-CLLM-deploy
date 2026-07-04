@@ -1,0 +1,127 @@
+[
+  {
+    "case_id": "insurance-001",
+    "query_text": "What insurance carrier writes the directors and officers policy for the Cedar Cay development?",
+    "expected_output": "The directors and officers policy for the Cedar Cay development is placed with a Lloyd's syndicate via the broker referenced in the do-insurance inquiry conversation.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md"
+    ],
+    "notes": "Single-vertex carrier lookup."
+  },
+  {
+    "case_id": "insurance-002",
+    "query_text": "What is the current limit on the marine hull policy for the sectional barge?",
+    "expected_output": "The marine hull policy on the sectional barge carries a limit equal to the depreciated replacement cost referenced in the marine-sectional-barge-pricing conversation, with a deductible scaled to one percent of insured value.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md"
+    ],
+    "notes": "Keyword lookup against policy-limit clause."
+  },
+  {
+    "case_id": "insurance-003",
+    "query_text": "Which policies cover the aircraft acquisition under evaluation?",
+    "expected_output": "The aircraft acquisition is anticipated to be covered by an aviation hull and liability binder, plus a war-risk endorsement, both arranged in parallel with the purchase verification workstream documented in the aircraft conversation.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_aircraft-purchase-verification-and-market-benchmarking.md"
+    ],
+    "notes": "Asset-to-policy edge traversal."
+  },
+  {
+    "case_id": "insurance-004",
+    "query_text": "Which insurance policies share a common broker across the holding-company portfolio?",
+    "expected_output": "The directors-and-officers policy and the marine hull policy share the same broker of record. Cross-referencing the Cedar Cay D&O inquiry with the marine barge pricing thread shows both sourced through the same intermediary.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md"
+    ],
+    "notes": "Multi-hop: policy -> broker -> policy."
+  },
+  {
+    "case_id": "insurance-005",
+    "query_text": "How does the renewal cycle differ between property and liability lines?",
+    "expected_output": "Property lines renew on a calendar-year basis tied to capital-budget review, while liability lines renew on policy anniversary, decoupled from the capital cycle. The acquisition memo and the D&O inquiry both reflect this split.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md"
+    ],
+    "notes": "Multi-hop semantic across policy-class clauses."
+  },
+  {
+    "case_id": "insurance-006",
+    "query_text": "Which exclusions appear in the directors-and-officers policy that affect operating-entity managers?",
+    "expected_output": "The D&O policy excludes claims arising from prior known acts, insured-versus-insured disputes, and ERISA fiduciary breaches. Operating-entity managers are within the named-insured definition for outside-directorship coverage subject to the standard prior-acts carve-out.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/20260310_conversation_email-response-to-board-chairman-comments.md"
+    ],
+    "notes": "Multi-hop: policy -> exclusion clause -> insured role."
+  },
+  {
+    "case_id": "insurance-007",
+    "query_text": "Compare the deductible structures across the property, marine, and aviation policies.",
+    "expected_output": "Property deductibles are flat-dollar per occurrence; marine deductibles scale with insured value at one percent; aviation deductibles vary between hull-not-in-motion and in-motion coverage. The three policies' deductible logic is documented in their respective binder records.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md",
+      "data/discovery-sample/business/20260313_conversation_aircraft-purchase-verification-and-market-benchmarking.md"
+    ],
+    "notes": "Multi-hop comparative reasoning."
+  },
+  {
+    "case_id": "insurance-008",
+    "query_text": "How many distinct insurance policies are tracked across the holding portfolio?",
+    "expected_output": "Four distinct policies are tracked: a directors-and-officers tower, a marine hull-and-liability binder, an aviation hull-and-liability binder, and a property package on the real-estate holdings.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md"
+    ],
+    "notes": "Aggregate count over Insurance_Policy vertices."
+  },
+  {
+    "case_id": "insurance-009",
+    "query_text": "What is the total insured value across all marine assets?",
+    "expected_output": "The total insured value across marine assets equals the sum of the sectional-barge depreciated replacement cost and any tendered support craft listed in the marine pricing conversation, aggregated under the marine-asset LLC.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md"
+    ],
+    "notes": "Aggregate sum of insured values."
+  },
+  {
+    "case_id": "insurance-010",
+    "query_text": "Summarize the rationale for choosing a Lloyd's market for D&O coverage.",
+    "expected_output": "Lloyd's was chosen because the development carries unusual jurisdictional exposure tied to Bahamian land use, which domestic admitted markets either declined or rated punitively. Lloyd's syndicates were able to write the risk on a manuscript-form basis with broader prior-acts coverage.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "semantic",
+    "ontology_module": "insurance",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md"
+    ],
+    "notes": "Semantic summary of placement rationale."
+  }
+]

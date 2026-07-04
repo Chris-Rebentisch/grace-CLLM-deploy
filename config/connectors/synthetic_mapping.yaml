@@ -1,0 +1,48 @@
+# Schema mapping configuration for the synthetic test connector.
+# Maps source-system types to mother-ontology types with property-level mappings.
+# Hand-authored — not LLM-generated (v1 scope).
+
+mappings:
+  # SyntheticA types → mother-ontology types
+  Construction_Company:
+    target_type: Legal_Entity
+    properties:
+      name: name
+      industry: industry
+      region: region
+  Project_Site:
+    target_type: Location
+    properties:
+      name: name
+  Equipment_Unit:
+    target_type: Asset
+    properties:
+      name: name
+  Worker_Profile:
+    target_type: Person
+    properties:
+      name: name
+  Material_Order:
+    target_type: Transaction
+    properties:
+      name: name
+
+  # SyntheticB types → mother-ontology types
+  Business_Entity:
+    target_type: Legal_Entity
+    properties:
+      name: name
+      sector: industry
+      city: region
+  Job_Location:
+    target_type: Location
+    properties:
+      name: name
+  Asset_Item:
+    target_type: Asset
+    properties:
+      name: name
+  Personnel_Record:
+    target_type: Person
+    properties:
+      name: name

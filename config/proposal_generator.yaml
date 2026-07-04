@@ -1,0 +1,6 @@
+# Proposal generator operator knobs (Chunk 47, D387).
+dedup_window_days: 7
+queue_depth_soft_cap: 50
+confidence_threshold: 0.1
+signal_strength_threshold: 0.3
+recurrence_denominator: 3

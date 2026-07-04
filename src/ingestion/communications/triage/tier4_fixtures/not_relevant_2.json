@@ -1,0 +1,5 @@
+{
+  "body_text": "Build #4821 failed on branch feature/update-deps. Step: run_tests. Exit code: 1. Duration: 3m 42s. See attached logs for details. This is an automated notification — do not reply to this message.",
+  "expected_relevant": false,
+  "expected_rationale_band": "high"
+}

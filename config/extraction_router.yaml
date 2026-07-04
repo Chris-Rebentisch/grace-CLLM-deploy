@@ -1,0 +1,111 @@
+# Extraction router provider catalog (D471, Chunk 72b)
+# Operator-editable; consumed by src/extraction/router_config.py
+
+profiles:
+  ollama_72b:
+    context_window: 131072
+    max_output_tokens: 32768
+    pricing_input_per_m: 0.0
+    pricing_output_per_m: 0.0
+    batch_discount: 0.0
+    airgap_eligible: true
+    data_residency: "local"
+    typical_throughput_tok_s: 30.0
+
+  haiku_4_5:
+    context_window: 200000
+    max_output_tokens: 8192
+    pricing_input_per_m: 1.0
+    pricing_output_per_m: 5.0
+    batch_discount: 0.5
+    airgap_eligible: false
+    data_residency: "us"
+    typical_throughput_tok_s: 150.0
+
+  deepseek_v3:
+    context_window: 65536
+    max_output_tokens: 8192
+    pricing_input_per_m: 0.27
+    pricing_output_per_m: 1.10
+    batch_discount: 0.0
+    cache_hit_price: 0.027
+    airgap_eligible: false
+    data_residency: "any"
+    typical_throughput_tok_s: 60.0
+
+  sonnet_4_6:
+    context_window: 200000
+    max_output_tokens: 16384
+    pricing_input_per_m: 3.0
+    pricing_output_per_m: 15.0
+    batch_discount: 0.5
+    airgap_eligible: false
+    data_residency: "us"
+    typical_throughput_tok_s: 100.0
+
+  opus_4_7:
+    context_window: 200000
+    max_output_tokens: 32000
+    pricing_input_per_m: 15.0
+    pricing_output_per_m: 75.0
+    batch_discount: 0.5
+    airgap_eligible: false
+    data_residency: "us"
+    typical_throughput_tok_s: 40.0
+
+  # D502 (Chunk 77b): vision-capable provider profiles
+  ollama_vision:
+    context_window: 131072
+    max_output_tokens: 32768
+    pricing_input_per_m: 0.0
+    pricing_output_per_m: 0.0
+    batch_discount: 0.0
+    airgap_eligible: true
+    data_residency: "local"
+    typical_throughput_tok_s: 15.0
+    vision_capable: true
+    vision_model: "qwen2.5-vl:32b"
+
+  haiku_4_5_vision:
+    context_window: 200000
+    max_output_tokens: 8192
+    pricing_input_per_m: 1.0
+    pricing_output_per_m: 5.0
+    batch_discount: 0.5
+    airgap_eligible: false
+    data_residency: "us"
+    typical_throughput_tok_s: 150.0
+    vision_capable: true
+    vision_model: "claude-haiku-4-5-20251001"
+
+  gpt4o_vision:
+    context_window: 128000
+    max_output_tokens: 16384
+    pricing_input_per_m: 2.5
+    pricing_output_per_m: 10.0
+    batch_discount: 0.0
+    airgap_eligible: false
+    data_residency: "us"
+    typical_throughput_tok_s: 100.0
+    vision_capable: true
+    vision_model: "gpt-4o"
+
+# Allowed source path prefixes for extraction routing
+source_path_allowlist:
+  - "data/discovery-sample/"
+  - "data/corpus/"
+
+# Size-tier to profile mapping (used by SIZE_TIER strategy)
+size_tier_mapping:
+  small: ollama_72b
+  medium: haiku_4_5
+  large: ollama_72b
+
+# Multi-objective scoring weights (72c: enables hybrid scoring)
+alpha_cost: 1.0
+beta_time: 0.0
+gamma_quality: 0.0
+exploration_epsilon: 0.0
+
+# Pricing snapshot date (ISO format)
+pricing_snapshot_date: "2026-05-27"

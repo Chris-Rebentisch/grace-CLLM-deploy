@@ -1,0 +1,28 @@
+# Grafana Unified Alerting contact points (Chunk 33, D249/D254).
+#
+# Single v1 webhook to the GrACE alert ingestion endpoint. The webhook
+# is non-functional without GRACE_ADMIN_KEY — Grafana injects the
+# X-Admin-Key header on every delivery via settings.httpHeaderName1.
+#
+# OPERATOR ACTION: replace the placeholder below with the value of
+# GRACE_ADMIN_KEY from your environment .env. Do NOT commit a real key.
+
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: grace-internal-webhook
+    receivers:
+      - uid: grace-internal-webhook-1
+        type: webhook
+        settings:
+          # Grafana 11.3 keyed-deployment requirement (D249). The header
+          # name + value are required; alerting payloads without
+          # X-Admin-Key are rejected by AuthMiddleware.
+          httpHeaderName1: X-Admin-Key
+          # OPERATOR: replace with your GRACE_ADMIN_KEY value before
+          # enabling alerting in non-localhost deployments.
+          httpHeaderValue1: "REPLACE-WITH-GRACE_ADMIN_KEY-VALUE"
+          url: http://host.docker.internal:8000/api/analytics/alerts/_internal
+          httpMethod: POST
+        disableResolveMessage: false

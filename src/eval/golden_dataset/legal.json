@@ -1,0 +1,127 @@
+[
+  {
+    "case_id": "legal-001",
+    "query_text": "What jurisdiction governs the lease-renewal option agreement?",
+    "expected_output": "The lease-renewal option agreement is governed by Florida law, consistent with the location of the leased premises referenced in the lease-renewal correspondence.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_lease-renewal-option-with-landlord-discretion.md"
+    ],
+    "notes": "Keyword lookup on governing-law clause."
+  },
+  {
+    "case_id": "legal-002",
+    "query_text": "What regulatory regime governs Florida resale-certificate compliance?",
+    "expected_output": "Florida resale-certificate compliance is governed by Florida Department of Revenue rules under the state sales-and-use-tax statute, as discussed in the resale-certificate compliance conversation.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_florida-resale-certificate-regulation-compliance.md"
+    ],
+    "notes": "Single-vertex regulator lookup."
+  },
+  {
+    "case_id": "legal-003",
+    "query_text": "Which entity holds the master services agreement with the lead contractor?",
+    "expected_output": "The master services agreement with the lead contractor is held by the construction-operating LLC, with subordinate work orders flowing through the contractor directory and the Oakmont scope-of-work record.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Single-vertex agreement lookup."
+  },
+  {
+    "case_id": "legal-004",
+    "query_text": "How does the landlord-discretion clause in the lease interact with the option to extend?",
+    "expected_output": "The landlord-discretion clause makes the renewal option contingent on the landlord's good-faith approval rather than a unilateral tenant right. The option is therefore a soft option: the tenant may exercise, but the landlord retains discretion to refuse on commercially reasonable grounds.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_lease-renewal-option-with-landlord-discretion.md"
+    ],
+    "notes": "Multi-hop clause interpretation."
+  },
+  {
+    "case_id": "legal-005",
+    "query_text": "Which contracts include indemnification obligations running from the holding company to operating subsidiaries?",
+    "expected_output": "The directors-and-officers policy and the master services agreement each carry indemnification obligations flowing from the holding company down to operating-subsidiary officers and managers, conditioned on good-faith conduct and absence of insured-versus-insured claims.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260313_conversation_do-insurance-inquiry-for-cedar-cay-development.md",
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Multi-hop: contract -> indemnity clause -> entity."
+  },
+  {
+    "case_id": "legal-006",
+    "query_text": "How do regulatory compliance obligations differ between the marine and aviation acquisitions?",
+    "expected_output": "Marine acquisitions trigger US Coast Guard documentation and state titling, while aviation acquisitions trigger FAA registration and an N-number bill-of-sale chain. Both flows produce filings retained in the legal record alongside the acquisition memos.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md",
+      "data/discovery-sample/business/20260313_conversation_aircraft-purchase-verification-and-market-benchmarking.md"
+    ],
+    "notes": "Multi-hop comparative regulatory."
+  },
+  {
+    "case_id": "legal-007",
+    "query_text": "Which counterparties hold dispute-resolution obligations with the construction LLC?",
+    "expected_output": "Counterparties holding dispute-resolution obligations with the construction LLC include each contractor in the contractor directory, with disputes channelled to AAA construction arbitration under the master services agreement.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "multi_hop",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Multi-hop counterparty graph."
+  },
+  {
+    "case_id": "legal-008",
+    "query_text": "How many distinct material contracts are recorded across the discovery corpus?",
+    "expected_output": "Five material contracts are recorded: the lease, the master services agreement, the directors-and-officers policy, the marine binder, and the aviation binder.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_lease-renewal-option-with-landlord-discretion.md",
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Aggregate count of Contract vertices."
+  },
+  {
+    "case_id": "legal-009",
+    "query_text": "How many regulatory filings are anticipated across the open acquisition pipeline?",
+    "expected_output": "Three regulatory filings are anticipated across the open acquisition pipeline: a USCG marine documentation transfer, an FAA aircraft registration, and a Florida sales-and-use-tax resale-certificate filing aggregated across pass-through materials.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260312_conversation_marine-sectional-barge-pricing.md",
+      "data/discovery-sample/business/20260313_conversation_aircraft-purchase-verification-and-market-benchmarking.md",
+      "data/discovery-sample/business/20260313_conversation_florida-resale-certificate-regulation-compliance.md"
+    ],
+    "notes": "Aggregate filings count."
+  },
+  {
+    "case_id": "legal-010",
+    "query_text": "Summarize the legal posture of the small-business acquisition strategy.",
+    "expected_output": "The acquisition strategy uses an asset-purchase preference where feasible to limit successor liability, with stock purchases reserved for cases where licenses or contracts cannot be reassigned. Reps and warranties are negotiated against a one-year general survival, with fundamental reps and tax indemnities surviving longer.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "semantic",
+    "ontology_module": "legal",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Semantic legal-posture summary."
+  }
+]

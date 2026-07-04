@@ -1,0 +1,196 @@
+{
+  "version": "1.0.0",
+  "universal_sources": ["schema_org_base", "prov_o_core"],
+  "sources": [
+    {
+      "id": "fibo_legal_entities",
+      "name": "FIBO Legal Entities",
+      "source_ontology": "fibo",
+      "description": "Legal Entity hierarchy: Corporation, Trust, Partnership, LLC. Jurisdiction modeling.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/",
+      "local_path": "seeds/fibo/LegalEntities.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["corporate_structure", "legal"],
+      "industry_verticals": ["financial_services", "real_estate", "legal_professional_services", "insurance"]
+    },
+    {
+      "id": "fibo_ownership",
+      "name": "FIBO Ownership & Control",
+      "source_ontology": "fibo",
+      "description": "Ownership/control relationships, beneficial ownership patterns, corporate bodies.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/",
+      "local_path": "seeds/fibo/OwnershipParties.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["corporate_structure"],
+      "industry_verticals": ["financial_services", "real_estate", "legal_professional_services"]
+    },
+    {
+      "id": "fibo_corporate_bodies",
+      "name": "FIBO Corporate Bodies",
+      "source_ontology": "fibo",
+      "description": "Formal business organization types and corporate body classifications.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/",
+      "local_path": "seeds/fibo/CorporateBodies.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["corporate_structure"],
+      "industry_verticals": ["financial_services", "real_estate", "legal_professional_services", "insurance"]
+    },
+    {
+      "id": "fibo_formal_organizations",
+      "name": "FIBO Formal Business Organizations",
+      "source_ontology": "fibo",
+      "description": "Formal organization structures and business entity formations.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/",
+      "local_path": "seeds/fibo/FormalBusinessOrganizations.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["corporate_structure", "operations"],
+      "industry_verticals": ["financial_services", "real_estate", "manufacturing"]
+    },
+    {
+      "id": "fibo_legal_capacity",
+      "name": "FIBO Legal Capacity",
+      "source_ontology": "fibo",
+      "description": "Legal capacity, legal rights, and regulatory powers.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/",
+      "local_path": "seeds/fibo/LegalCapacity.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["legal"],
+      "industry_verticals": ["financial_services", "legal_professional_services", "insurance"]
+    },
+    {
+      "id": "fibo_legal_core",
+      "name": "FIBO Legal Core",
+      "source_ontology": "fibo",
+      "description": "Core legal concepts and foundational legal relationships.",
+      "download_url": "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/",
+      "local_path": "seeds/fibo/LegalCore.rdf",
+      "file_format": "rdf_xml",
+      "version": "2024Q4",
+      "domains": ["legal"],
+      "industry_verticals": ["financial_services", "legal_professional_services"]
+    },
+    {
+      "id": "lkif_legal_action",
+      "name": "LKIF Legal Action",
+      "source_ontology": "lkif",
+      "description": "Legal actions, decisions, public acts. Contract modeling foundations.",
+      "download_url": "https://raw.githubusercontent.com/RinkeHoekstra/lkif-core/master/legal-action.owl",
+      "local_path": "seeds/lkif/legal-action.owl",
+      "file_format": "owl_xml",
+      "version": "2.0",
+      "domains": ["legal"],
+      "industry_verticals": ["legal_professional_services", "financial_services", "insurance"]
+    },
+    {
+      "id": "lkif_legal_role",
+      "name": "LKIF Legal Roles",
+      "source_ontology": "lkif",
+      "description": "Legal roles, parties, obligations, rights in legal relationships.",
+      "download_url": "https://raw.githubusercontent.com/RinkeHoekstra/lkif-core/master/legal-role.owl",
+      "local_path": "seeds/lkif/legal-role.owl",
+      "file_format": "owl_xml",
+      "version": "2.0",
+      "domains": ["legal"],
+      "industry_verticals": ["legal_professional_services", "financial_services", "real_estate"]
+    },
+    {
+      "id": "lkif_norm",
+      "name": "LKIF Norms & Regulations",
+      "source_ontology": "lkif",
+      "description": "Normative frameworks, regulations, compliance obligations.",
+      "download_url": "https://raw.githubusercontent.com/RinkeHoekstra/lkif-core/master/norm.owl",
+      "local_path": "seeds/lkif/norm.owl",
+      "file_format": "owl_xml",
+      "version": "2.0",
+      "domains": ["legal", "operations"],
+      "industry_verticals": ["legal_professional_services", "financial_services", "insurance", "healthcare"]
+    },
+    {
+      "id": "schema_org_base",
+      "name": "Schema.org Base Types",
+      "source_ontology": "schema_org",
+      "description": "Universal entity patterns: Organization, Person, Place, Event, Document, Product.",
+      "download_url": "https://schema.org/version/latest/schemaorg-current-https.ttl",
+      "local_path": "seeds/schema-org/schemaorg.ttl",
+      "file_format": "turtle",
+      "version": "28.0",
+      "domains": [],
+      "industry_verticals": []
+    },
+    {
+      "id": "prov_o_core",
+      "name": "PROV-O Provenance",
+      "source_ontology": "prov_o",
+      "description": "Entity-Activity-Agent triad. Provenance tracking: wasGeneratedBy, wasAttributedTo, wasDerivedFrom.",
+      "download_url": "https://www.w3.org/ns/prov.ttl",
+      "local_path": "seeds/prov-o/prov.ttl",
+      "file_format": "turtle",
+      "version": "2013-04-30",
+      "domains": [],
+      "industry_verticals": []
+    }
+  ],
+  "industry_profiles": [
+    {
+      "industry_id": "financial_services",
+      "name": "Financial Services",
+      "description": "Banks, investment firms, fund managers, financial advisors. Corporate structures, regulatory compliance, ownership chains.",
+      "required_seeds": ["fibo_legal_entities", "fibo_ownership", "fibo_corporate_bodies", "fibo_legal_core", "lkif_norm"],
+      "recommended_seeds": ["fibo_formal_organizations", "fibo_legal_capacity", "lkif_legal_action", "lkif_legal_role"]
+    },
+    {
+      "industry_id": "real_estate",
+      "name": "Real Estate & Property Management",
+      "description": "Property development, management companies, HOAs, construction. Corporate structures, contracts, insurance.",
+      "required_seeds": ["fibo_legal_entities", "fibo_ownership", "fibo_corporate_bodies", "lkif_legal_role"],
+      "recommended_seeds": ["fibo_legal_capacity", "lkif_norm", "lkif_legal_action"]
+    },
+    {
+      "industry_id": "legal_professional_services",
+      "name": "Legal & Professional Services",
+      "description": "Law firms, accounting firms, consulting. Client entities, regulatory frameworks, contract management.",
+      "required_seeds": ["fibo_legal_entities", "fibo_legal_core", "fibo_legal_capacity", "lkif_legal_action", "lkif_legal_role", "lkif_norm"],
+      "recommended_seeds": ["fibo_corporate_bodies", "fibo_ownership"]
+    },
+    {
+      "industry_id": "insurance",
+      "name": "Insurance",
+      "description": "Insurance carriers, brokers, underwriters. Policy structures, claims, risk assessment, regulatory compliance.",
+      "required_seeds": ["fibo_legal_entities", "fibo_corporate_bodies", "lkif_norm", "lkif_legal_action"],
+      "recommended_seeds": ["fibo_ownership", "fibo_legal_capacity", "lkif_legal_role"]
+    },
+    {
+      "industry_id": "construction",
+      "name": "Construction & Development",
+      "description": "General contractors, developers, subcontractors. Project management, permitting, vendor relationships.",
+      "required_seeds": ["fibo_legal_entities", "fibo_corporate_bodies", "lkif_legal_role"],
+      "recommended_seeds": ["fibo_formal_organizations", "lkif_norm"]
+    },
+    {
+      "industry_id": "healthcare",
+      "name": "Healthcare",
+      "description": "Hospitals, clinics, health systems. Patient data, regulatory compliance, provider networks.",
+      "required_seeds": ["fibo_legal_entities", "lkif_norm"],
+      "recommended_seeds": ["fibo_corporate_bodies", "lkif_legal_role", "lkif_legal_action"]
+    },
+    {
+      "industry_id": "manufacturing",
+      "name": "Manufacturing",
+      "description": "Manufacturers, suppliers, distributors. Supply chain, vendor management, quality control.",
+      "required_seeds": ["fibo_legal_entities", "fibo_formal_organizations"],
+      "recommended_seeds": ["fibo_corporate_bodies", "lkif_norm"]
+    },
+    {
+      "industry_id": "general",
+      "name": "General / Other",
+      "description": "Organizations that don't fit a specific industry profile. Basic corporate and legal patterns.",
+      "required_seeds": ["fibo_legal_entities"],
+      "recommended_seeds": ["fibo_corporate_bodies", "lkif_legal_role"]
+    }
+  ]
+}

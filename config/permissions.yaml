@@ -1,0 +1,38 @@
+# Guided Permissions engine operator-tunable defaults (Chunk 42, D331/D337).
+#
+# Values here mirror the locked defaults in ``src/permissions/drift_detector.py``
+# and ``src/permissions/principal_context.py``. Edit and restart uvicorn /
+# the launchd job to apply changes; no hot reload.
+
+drift:
+  # Cosine similarity at-or-above which a candidate Person is auto-assigned
+  # to the closest cluster centroid (D337 high band). Default 0.85.
+  auto_assign_threshold: 0.85
+
+  # Cosine similarity at-or-above which a candidate is queued WITH a
+  # pre-filled best-guess (D337 medium band). Default 0.60. Below this
+  # the candidate is queued blind (low band).
+  queue_with_guess_threshold: 0.60
+
+  # Default cadence at which the launchd plist invokes the drift detector.
+  # The plist sample is `scripts/launchd/grace.permission-drift.plist.example`.
+  cadence: daily
+
+# Agent-scope static profiles (D338).
+#
+# Each entry is a static scope profile burned in at config time. v1 ships
+# the schema only — no runtime path consumes these until Chunk 44 activates
+# the agent variant. Per-call agent scopes are explicitly out of scope at v1.
+agent_scopes:
+  # Example profile — operators replace with site-specific entries.
+  # static_config:
+  #   - agent_id: "summarizer-v1"
+  #     allows:
+  #       - resource_kind: graph_entity
+  #         resource_label: public
+  #         action: view
+  #     denies:
+  #       - resource_kind: change_directive
+  #         resource_label: any
+  #         action: edit
+  static_config: []

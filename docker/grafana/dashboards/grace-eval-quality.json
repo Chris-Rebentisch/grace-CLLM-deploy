@@ -1,0 +1,198 @@
+{
+  "__inputs": [
+    {"name": "DS_PROMETHEUS", "label": "Prometheus", "type": "datasource", "pluginId": "prometheus", "pluginName": "Prometheus"},
+    {"name": "DS_POSTGRES", "label": "Postgres", "type": "datasource", "pluginId": "postgres", "pluginName": "PostgreSQL"}
+  ],
+  "annotations": {"list": []},
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "Faithfulness histogram observations from the DeepEval suite. Recorded once per faithfulness case via the shared OTel Meter API instrument (grace_decompression_faithfulness). Observations carry ontology_module / phase_state / sample_batch_id labels (D151 _init filters applied). NO-DATA is the expected state on a fresh deployment until the first eval-suite run.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "id": 1,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "histogram_quantile(0.5, sum by (le, ontology_module) (rate(grace_decompression_faithfulness_bucket{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"}[5m])))",
+          "legendFormat": "p50 {{ontology_module}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "histogram_quantile(0.95, sum by (le, ontology_module) (rate(grace_decompression_faithfulness_bucket{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"}[5m])))",
+          "legendFormat": "p95 {{ontology_module}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Faithfulness — p50 / p95 per ontology_module",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "MINE retention ratio observable gauge. Populated by the MINE emitter's set_mine_retention_observation() callback after each MINE-sample API call. NO-DATA before the first MINE run. _init filters per D151.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "id": 2,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "max by (ontology_module) (grace_mine_retention_ratio{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"})",
+          "legendFormat": "{{ontology_module}}",
+          "refId": "A"
+        }
+      ],
+      "title": "MINE Retention Ratio",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Per-metric mean score over time, sourced from deepeval_results joined to eval_runs. One series per metric_name (5 metrics).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+      "id": 3,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "time_series",
+          "rawSql": "SELECT eval_runs.started_at AS time, deepeval_results.metric_name AS metric, AVG(deepeval_results.metric_score) AS value FROM deepeval_results JOIN eval_runs ON eval_runs.id = deepeval_results.run_id WHERE eval_runs.started_at > $__timeFrom() AND eval_runs.started_at < $__timeTo() GROUP BY eval_runs.started_at, deepeval_results.metric_name ORDER BY eval_runs.started_at;",
+          "refId": "A"
+        }
+      ],
+      "title": "Per-metric Mean Score",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Eval run pass counts over time: cases passing the warn floor and the fail floor. Both series stable at total_cases is the green baseline. A drop in passed_warn_floor (with passed_fail_floor still at total_cases) means recalibrate per docs/eval-runbook.md.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+      "id": 4,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "time_series",
+          "rawSql": "SELECT eval_runs.started_at AS time, eval_runs.passed_warn_floor AS passed_warn, eval_runs.passed_fail_floor AS passed_fail, eval_runs.total_cases AS total FROM eval_runs WHERE eval_runs.started_at > $__timeFrom() AND eval_runs.started_at < $__timeTo() ORDER BY eval_runs.started_at;",
+          "refId": "A"
+        }
+      ],
+      "title": "Eval Run Pass Counts",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Per-run total_cases. Stable line means the golden dataset is stable; changes here imply a dataset edit per the runbook 'adding cases' workflow.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+      "id": 5,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "time_series",
+          "rawSql": "SELECT eval_runs.started_at AS time, eval_runs.total_cases AS value FROM eval_runs WHERE eval_runs.started_at > $__timeFrom() AND eval_runs.started_at < $__timeTo() ORDER BY eval_runs.started_at;",
+          "refId": "A"
+        }
+      ],
+      "title": "Eval Suite Case Count",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Latest 1 eval_run row with status, total_cases, pass counts, and config / golden hashes. Use this to check the most recent suite outcome at a glance.",
+      "fieldConfig": {
+        "defaults": {"color": {"mode": "thresholds"}, "custom": {"align": "auto"}},
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 24},
+      "id": 6,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "format": "table",
+          "rawSql": "SELECT eval_runs.started_at, eval_runs.completed_at, eval_runs.status, eval_runs.total_cases, eval_runs.passed_warn_floor, eval_runs.passed_fail_floor, eval_runs.config_hash, eval_runs.golden_dataset_hash, eval_runs.triggered_by FROM eval_runs ORDER BY eval_runs.started_at DESC LIMIT 1;",
+          "refId": "A"
+        }
+      ],
+      "title": "Latest Eval Run",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["grace", "eval", "deepeval"],
+  "templating": {"list": []},
+  "time": {"from": "now-30d", "to": "now"},
+  "timezone": "",
+  "title": "GrACE Eval Quality — Overview",
+  "uid": "grace-eval-quality",
+  "version": 1,
+  "weekStart": ""
+}

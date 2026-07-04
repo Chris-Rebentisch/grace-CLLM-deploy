@@ -1,0 +1,31 @@
+# Confidence decay configuration (Chunk 35a, D264).
+#
+# Half-life decay applied to verified graph entities and edges:
+#   c_new = max(verdict_floor, c_at_verification * 2 ** (-Δt / t_half_days))
+#
+# `Δt` is operator-supplied via the CLI's --observation-time argument.
+# The transform does NOT call NOW(); decay_run is idempotent under a
+# fixed clock parameter.
+#
+# Scope (v3 B1 resolution): graph entities and edges in ArcadeDB ONLY.
+# Postgres `extraction_claims` rows retain immutable extraction-time
+# confidence as historical provenance — they are NOT decayed.
+#
+# Verdict-band floors mirror Chunk 19's verdict-band ceilings/floors
+# (src/extraction/confidence_scorer.py:59-68): SUPPORTED 0.8 ceiling,
+# INSUFFICIENT 0.5 floor, REFUTED 0.05 floor.
+
+t_half_days: 180  # default half-life in days
+
+# Optional per-relationship overrides. Map relationship_type -> t_half_days.
+# Empty default — operators add per-domain tuning post-deployment.
+per_relationship_overrides: {}
+
+# Verdict-band floors: confidence cannot decay below these values.
+verdict_floors:
+  SUPPORTED: 0.5      # cannot decay below INSUFFICIENT band
+  INSUFFICIENT: 0.5
+  REFUTED: 0.05
+
+default_confidence_at_verification: 0.9
+rows_decayed_equality_epsilon: 1.0e-9

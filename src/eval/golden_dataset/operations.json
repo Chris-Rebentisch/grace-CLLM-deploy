@@ -1,0 +1,53 @@
+[
+  {
+    "case_id": "operations-001",
+    "query_text": "What is the standard recipe yield for the house pasta special dish?",
+    "expected_output": "The house pasta special dish is documented for a four-portion service yield, with proportional scaling notes for plated tasting menus referenced in the recipe document.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "operations",
+    "source_documents": [
+      "data/discovery-sample/food/Beef_Ragu_Tortellini_Truffle_Broth_Foam.docx"
+    ],
+    "notes": "Keyword lookup on yield clause."
+  },
+  {
+    "case_id": "operations-002",
+    "query_text": "Which technique does the gigot d'agneau recipe call out from the Keller method?",
+    "expected_output": "The gigot d'agneau recipe follows the Keller method's slow-roast convection approach, with rest-period and basting cadence captured per the source document.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "operations",
+    "source_documents": [
+      "data/discovery-sample/food/Gigot-dAgneau-Keller-Method.docx"
+    ],
+    "notes": "Multi-hop technique attribution."
+  },
+  {
+    "case_id": "operations-003",
+    "query_text": "How does the cookie proforma's unit-economics relate to the sauce pasta plate's cost structure?",
+    "expected_output": "The cookie proforma is built on bulk packaged unit economics with a per-unit COGS dominated by butter and chocolate, while the sauce pasta plate is plated-service with a per-cover COGS dominated by labor and truffle. The two products represent the wholesale-versus-restaurant split in the food vertical's operations.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "operations",
+    "source_documents": [
+      "data/discovery-sample/food/Cookie Proforma.xlsx",
+      "data/discovery-sample/food/Beef_Ragu_Tortellini_Truffle_Broth_Foam.docx"
+    ],
+    "notes": "Multi-hop operations-economics comparison."
+  },
+  {
+    "case_id": "operations-004",
+    "query_text": "How many active recipes are tracked in the food operations corpus?",
+    "expected_output": "Three active recipes are tracked in the food operations corpus: the beef sauce pasta, the gigot d'agneau Keller-method preparation, and the cookie proforma's bake formula.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "operations",
+    "source_documents": [
+      "data/discovery-sample/food/Beef_Ragu_Tortellini_Truffle_Broth_Foam.docx",
+      "data/discovery-sample/food/Gigot-dAgneau-Keller-Method.docx",
+      "data/discovery-sample/food/Cookie Proforma.xlsx"
+    ],
+    "notes": "Aggregate recipe count."
+  }
+]

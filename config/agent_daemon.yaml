@@ -1,0 +1,7 @@
+tick_interval_seconds: 300
+cooling_period_hours: 48
+pid_file_path: ~/.grace/agent-daemon.pid
+revertible_commands:
+  - "create class"
+  - "create relationship"
+  - "add property"

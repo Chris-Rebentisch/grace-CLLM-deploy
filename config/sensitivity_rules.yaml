@@ -1,0 +1,23 @@
+# Sensitivity rules configuration (Chunk 59, D426/D439)
+# Operator-editable; consumed by src/ingestion/communications/sensitivity_tagger.py
+
+# Canonical phrases for privilege detection trigger (b).
+# Matched at line start (^) with re.IGNORECASE to avoid forward-quoted text.
+privilege_phrases:
+  - "privileged and confidential"
+  - "privileged & confidential"
+  - "attorney-client privilege"
+  - "attorney client privilege"
+  - "legal privilege"
+  - "work product"
+  - "litigation hold"
+  - "do not forward"
+  - "without prejudice"
+
+# PII-density threshold (per 100 words). Fires when density >= threshold.
+# Default 5.0 — configurable from day one (R3 in spec §13).
+pii_density_threshold: 5.0
+
+# Organization domains source — read from config/voice_tone_config.yaml (Lock-R1).
+# This tagger reads that file directly; do not duplicate the list here.
+organization_domains_source: "config/voice_tone_config.yaml"

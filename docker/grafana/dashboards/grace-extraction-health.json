@@ -1,0 +1,211 @@
+{
+  "__inputs": [
+    {"name": "DS_PROMETHEUS", "label": "Prometheus", "type": "datasource", "pluginId": "prometheus", "pluginName": "Prometheus"},
+    {"name": "DS_POSTGRES", "label": "Postgres", "type": "datasource", "pluginId": "postgres", "pluginName": "PostgreSQL"}
+  ],
+  "annotations": {"list": []},
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "MINE retention trend (silent until Chunk 34 first observation).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "id": 1,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "avg by (ontology_module) (grace_mine_retention_ratio{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"})",
+          "legendFormat": "{{ontology_module}}",
+          "refId": "A"
+        }
+      ],
+      "title": "MINE Retention Ratio (Chunk 34)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "Compression ratio p50 / p95 by ontology module — tokens per graph element.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "id": 2,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "histogram_quantile(0.5, sum by (ontology_module, le) (rate(grace_compression_ratio_bucket{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"}[5m])))",
+          "legendFormat": "p50 {{ontology_module}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "histogram_quantile(0.95, sum by (ontology_module, le) (rate(grace_compression_ratio_bucket{ontology_module!=\"_init\",phase_state!=\"_init\",sample_batch_id!=\"_init\"}[5m])))",
+          "legendFormat": "p95 {{ontology_module}}",
+          "refId": "B"
+        }
+      ],
+      "title": "Compression Ratio by Module",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "Per-triple confidence distribution grouped by verdict (SUPPORTED / REFUTED / INSUFFICIENT).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "scheme", "scheme": "Spectral"},
+          "custom": {"hideFrom": {"legend": false, "tooltip": false, "viz": false}},
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+      "id": 3,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {"scheme": "Spectral", "mode": "scheme"},
+        "legend": {"show": true},
+        "tooltip": {"show": true, "yHistogram": false}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "sum by (verdict, le) (rate(grace_extraction_triple_confidence_bucket[5m]))",
+          "legendFormat": "{{verdict}}",
+          "format": "heatmap",
+          "refId": "A"
+        }
+      ],
+      "title": "Confidence Histogram by Verdict",
+      "type": "heatmap"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "description": "Extraction pipeline stage failure rate.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+      "id": 4,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+          "expr": "sum by (stage, error_type) (rate(grace_pipeline_stage_errors_total{pipeline=\"extraction\"}[5m]))",
+          "legendFormat": "{{stage}} / {{error_type}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Failure Rate by Stage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Average confidence per document over time, from extraction_events_pg.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {"drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never"},
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+      "id": 5,
+      "options": {
+        "legend": {"calcs": ["mean", "lastNotNull"], "displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "single", "sort": "none"}
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "rawSql": "SELECT completed_at AS time, ontology_module, avg_confidence FROM extraction_events_pg WHERE status = 'completed' AND completed_at > $__timeFrom() AND completed_at < $__timeTo() ORDER BY completed_at ASC;",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ],
+      "title": "Avg Confidence per Document",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+      "description": "Recent unresolved entities (matched_grace_id IS NULL) from entity_resolution_log.",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+      "id": 6,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {"type": "postgres", "uid": "${DS_POSTGRES}"},
+          "rawSql": "SELECT resolved_at, extracted_name, extracted_type, resolution_tier, similarity_score, resolution_note FROM entity_resolution_log WHERE matched_grace_id IS NULL AND resolved_at > $__timeFrom() AND resolved_at < $__timeTo() ORDER BY resolved_at DESC LIMIT 200;",
+          "refId": "A",
+          "format": "table"
+        }
+      ],
+      "title": "Unresolved Entities Log",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": ["grace", "extraction"],
+  "templating": {
+    "list": [
+      {
+        "name": "DS_PROMETHEUS",
+        "type": "datasource",
+        "query": "prometheus",
+        "hide": 0,
+        "current": {"text": "Prometheus", "value": "grace-prometheus"}
+      },
+      {
+        "name": "DS_POSTGRES",
+        "type": "datasource",
+        "query": "postgres",
+        "hide": 0,
+        "current": {"text": "Postgres", "value": "grace-postgres"}
+      }
+    ]
+  },
+  "time": {"from": "now-1h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "GrACE Extraction Health",
+  "uid": "grace-extraction-health",
+  "version": 1,
+  "weekStart": ""
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "canonical_text": "Which legal entities (companies, trusts, partnerships) appear as owners in the corporate structure?",
+    "cq_type": "SCOPING",
+    "domain": "corporate_structure",
+    "priority": "HIGH",
+    "rationale": "Establishes the core owner population the ontology must represent; top-down framing.",
+    "evidence_files": ["org_chart_2024.pdf", "cap_table.xlsx"],
+    "confidence": 0.9
+  },
+  {
+    "canonical_text": "What ownership percentage does each parent entity hold in each subsidiary?",
+    "cq_type": "RELATIONSHIP",
+    "domain": "corporate_structure",
+    "priority": "HIGH",
+    "rationale": "Forces an attributed ownership edge (percentage property) rather than a bare 'owns' link.",
+    "evidence_files": ["cap_table.xlsx"],
+    "confidence": 0.85
+  },
+  {
+    "canonical_text": "Does every insurance policy reference a named insured legal entity?",
+    "cq_type": "VALIDATING",
+    "domain": "insurance",
+    "priority": "MEDIUM",
+    "rationale": "Negative-evidence / integrity check — surfaces orphan policies and a required cross-domain link.",
+    "evidence_files": ["policy_AB123.pdf"],
+    "confidence": 0.8
+  },
+  {
+    "canonical_text": "What is the effective date and expiration date of each insurance policy?",
+    "cq_type": "METAPROPERTY",
+    "domain": "insurance",
+    "priority": "MEDIUM",
+    "rationale": "Temporal metaproperties the schema must carry on the Insurance_Policy type.",
+    "evidence_files": ["policy_AB123.pdf"],
+    "confidence": 0.85
+  }
+]

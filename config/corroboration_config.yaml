@@ -1,0 +1,61 @@
+# Corroboration scorer configuration (D515/D516/D517)
+# Controls noisy-OR scoring, iterative TruthFinder, and promotion gate.
+
+# Promotion gate thresholds (D517)
+theta_promote: 0.85
+k_senders: 2
+
+# Noisy-OR scoring (D515)
+lambda_contradict: 0.7
+
+# Iterative TruthFinder v2 (D516) — opt-in
+max_iters: 10
+delta: 0.001
+iterative: false
+
+# Source reliability priors (D515)
+priors:
+  canonical: 0.85
+  internal_domain: 0.75
+  external_known_service: 0.70
+  unknown: 0.50
+
+# Quality weights for stance labels (D515)
+quality_weights:
+  reply_affirm: 1.0
+  clear_assertion: 0.8
+  incidental: 0.5
+
+# Rule-based stance classifier cue lists (D515)
+affirm_cues:
+  - "I agree"
+  - "confirmed"
+  - "that's correct"
+  - "yes"
+  - "exactly"
+  - "right"
+  - "can confirm"
+  - "as you said"
+  - "indeed"
+  - "absolutely"
+
+contradict_cues:
+  - "I disagree"
+  - "that's wrong"
+  - "incorrect"
+  - "no"
+  - "actually"
+  - "not true"
+  - "on the contrary"
+  - "I don't think so"
+  - "that's not right"
+  - "mistaken"
+
+# Sender resolution vertex labels (D542; C1 defect #3)
+# Graph labels an email sender is resolved against (canonical registry match).
+# Superset default so legal-ontology deployments (Legal_Entity, no Person) work;
+# absent labels resolve as no-match, never an error.
+sender_entity_types:
+  - Person
+  - Organization
+  - Legal_Entity

@@ -1,0 +1,15 @@
+# Change executor operator knobs (Chunk 48, D392/D393).
+cq_gate_threshold: 0.90
+enable_graph_ddl_sync: true
+partial_ddl_policy: record_and_alert
+# F-38: gate mode. `differential` (default) passes a proposal when its CQ pass
+# rate does not regress the baseline by more than cq_gate_epsilon
+# (proposed >= baseline - epsilon). F2-08: the baseline is the latest completed
+# run on the active version OR any ancestor (previous_version_id walk), so
+# ratifications no longer erase it. Falls back to the absolute
+# cq_gate_threshold only when no run exists anywhere in the chain.
+# `absolute` restores the legacy fixed-threshold gate.
+cq_gate_mode: differential
+# F2-09: 0.10 = 3 CQs at n=30, above the measured +/-2-CQ judge noise band
+# (0.05 was inside it and refused a known-good revert once in a validation run).
+cq_gate_epsilon: 0.10

@@ -1,0 +1,144 @@
+name: CI
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-migration-revision-ids:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/lint/check-migration-revision-ids.sh
+
+  bootstrap-postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: grace
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: testpass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - run: uv sync --extra dev
+      - run: uv run alembic upgrade head
+        env:
+          DATABASE_URL: postgresql://postgres:testpass@localhost:5432/grace
+      - name: Bootstrap grace_readonly role (apply)
+        run: bash scripts/setup/bootstrap_grace_readonly.sh
+        env:
+          GRAFANA_POSTGRES_PASSWORD: ci-test-password
+          PGUSER: postgres
+          PGPASSWORD: testpass
+          PGDATABASE: grace
+      - name: Verify grace_readonly role (--check)
+        run: bash scripts/setup/bootstrap_grace_readonly.sh --check
+        env:
+          GRAFANA_POSTGRES_PASSWORD: ci-test-password
+          PGUSER: postgres
+          PGPASSWORD: testpass
+          PGDATABASE: grace
+
+  grafana-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose -f docker/docker-compose.observability.yml up -d
+      - run: bash scripts/preflight/grafana_health_check.sh
+
+  a3-harness-gates:
+    # A3 self-monitoring + remediation harness golden gates (grace-signal-probe +
+    # grace-gap-remediation-harness). Guards the deterministic gap-detection +
+    # remediation-scoring contracts and the D534 signal_mapping fix. Runs the
+    # heat-free gates only; the apply gate (requires_ollama -> qwen) is excluded
+    # in CI via -m "not requires_ollama". Seeds the grace_test SANDBOX only.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: grace
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: testpass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - run: uv sync --extra dev
+      - name: Start Prometheus (signal detectors A/C/E read it; empty -> clean no-op)
+        run: docker compose -f docker/docker-compose.observability.yml up -d prometheus
+      - name: Migrate grace + create/migrate grace_test sandbox
+        env:
+          DATABASE_URL: postgresql://postgres:testpass@localhost:5432/grace
+          PGPASSWORD: testpass
+        run: |
+          uv run alembic upgrade head
+          psql -h localhost -U postgres -c "CREATE DATABASE grace_test"
+          DATABASE_URL=postgresql://postgres:testpass@localhost:5432/grace_test uv run alembic upgrade head
+      - name: A3 harness golden gates (signal + remediation; apply auto-excluded w/o Ollama)
+        env:
+          DATABASE_URL: postgresql://postgres:testpass@localhost:5432/grace
+        run: uv run pytest tests/smoke/test_a3_harness_gates.py -m "smoke and not requires_ollama" -v
+
+  a4-harness-gates:
+    # A4 cross-module correlation harness golden gate (grace-correlation-probe).
+    # Guards the deterministic correlation-pattern detection contract and the D535
+    # ontology_constraint_conflict pattern. Heat-free (the engine is LLM-free).
+    # Seeds the grace_test SANDBOX only and asserts GOLD diagnostic_records unchanged.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: grace
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: testpass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - run: uv sync --extra dev
+      - name: Start Prometheus (3 correlation patterns read it; empty -> clean no-op)
+        run: docker compose -f docker/docker-compose.observability.yml up -d prometheus
+      - name: Migrate grace + create/migrate grace_test sandbox
+        env:
+          DATABASE_URL: postgresql://postgres:testpass@localhost:5432/grace
+          PGPASSWORD: testpass
+        run: |
+          uv run alembic upgrade head
+          psql -h localhost -U postgres -c "CREATE DATABASE grace_test"
+          DATABASE_URL=postgresql://postgres:testpass@localhost:5432/grace_test uv run alembic upgrade head
+      - name: A4 correlation harness golden gate + reasoner scorer contract
+        env:
+          DATABASE_URL: postgresql://postgres:testpass@localhost:5432/grace
+        run: uv run pytest tests/smoke/test_a4_harness_gates.py -m "smoke or not smoke" -v

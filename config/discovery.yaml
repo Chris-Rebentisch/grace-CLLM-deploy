@@ -1,0 +1,138 @@
+llm:
+  # Claude-as-the-LLM deployment: the in-app automated LLM provider defaults to
+  # Anthropic. Set LLM_API_KEY in .env to your Anthropic API key (see onboarding).
+  provider: anthropic
+  model: claude-haiku-4-5-20251001
+  # Ollama is STILL REQUIRED even with the Anthropic chat provider:
+  #   - embeddings (nomic-embed-text, 768-dim) always run locally via Ollama;
+  #   - a small local model (qwen2.5:7b) backs specific bounded pipeline stages.
+  # Install Ollama and pull `nomic-embed-text` + `qwen2.5:7b` on first run.
+  # To run fully local instead, set provider: ollama and model: qwen2.5:7b
+  # (or a larger local model if the host can fit it).
+  base_url: http://localhost:11434   # used by the Ollama provider + embeddings
+  timeout: 600
+  structured_output: auto
+  # Context window for the local Ollama paths. Schema extraction sends a large
+  # balanced corpus-as-prefix prompt; keep this well above the largest prompt so
+  # it is never silently truncated.
+  num_ctx: 65536
+# Cloud providers are enabled (airgap off) so the Anthropic provider can be used.
+# For an airgapped, fully-local install set airgap_mode: true and provider: ollama.
+airgap_mode: false
+domain_categories:
+- corporate_structure
+- real_estate
+- insurance
+- legal
+- tax
+- operations
+- vendors
+- hr
+- culinary
+- education
+- other
+project_directory_mappings: {}
+supported_extensions:
+- .pdf
+- .docx
+- .xlsx
+- .pptx
+- .html
+- .htm
+- .txt
+- .csv
+- .md
+- .jpg
+- .jpeg
+- .png
+- .tiff
+- .tif
+- .bmp
+- .webp
+cq_generation:
+  generation_mode: combined
+  combined_target_cqs: 30
+  per_document_batching: true
+  documents_per_batch: 4
+  max_document_chars_per_batch: 200000
+  max_sample_documents_per_domain: 10
+  max_sample_excerpt_chars: 500
+  passes:
+  - top_down
+  - bottom_up
+  - negative_evidence
+  - middle_out
+  target_cqs_per_pass_per_domain: 20
+  negative_evidence_target: 8
+seed:
+  industry_profile: ''
+  seeds_dir: seeds
+  parsed_cache_dir: seeds/parsed
+  schema_org_base_types:
+  - Organization
+  - Person
+  - Place
+  - Event
+  - CreativeWork
+  - Product
+schema_extraction:
+  passes:
+  - top_down
+  - bottom_up
+  - middle_out
+  temperature: 0.0
+  stage1_max_types: 15
+  stage1_max_relationships: 15
+  max_types_per_pass_per_domain: 30
+  max_relationships_per_pass_per_domain: 40
+  max_properties_per_type: 20
+  stage2_concurrency: 5
+  stage2_dedup_threshold: 0.85
+  stage2_mode: deferred
+  stage2_batch_size: 4
+cq_merge:
+  hdbscan_min_cluster_size: 2
+  hdbscan_cluster_selection_method: eom
+  relevance_similarity_threshold: 0.65
+  canonical_schema_only: true
+  quality_clean_min_pairwise: 0.8
+  quality_review_min_pairwise: 0.65
+  quality_clean_min_membership: 0.7
+  quality_review_min_membership: 0.4
+  min_clusters_per_domain: 3
+  min_type_percentage: 0.1
+  max_singleton_density: 0.4
+  gap_fill_max_cqs: 15
+  tier3_temperature_phrasing: 0.0
+  tier3_temperature_hierarchy: 0.0
+  tier3_temperature_gap_analysis: 0.3
+document_processing:
+  pipeline_mode: standard
+  vlm:
+    model_spec: GRANITEDOCLING_TRANSFORMERS
+    inference_backend: transformers
+  ocr:
+    backend: auto
+    force_full_page_ocr: true
+    rapidocr_model_paths: {}
+image_ingestion:
+  document_chunk_mode: auto
+ingestion:
+  deployment_path: null
+  readiness:
+    cq_mention_threshold: 3
+    # F-0030 (validation run, 2026-07-03): the extraction confidence scorer
+    # tops out at 0.8 for single-chunk SUPPORTED claims, so a 0.85 readiness
+    # floor rejected every healthy fresh extraction. 0.75 sits just below the
+    # supported-claim ceiling while still excluding low-confidence noise.
+    confidence_threshold: 0.75
+  sources: []
+  triage:
+    config_path: config/triage_rules.yaml
+  # F-0047b / ISS-0055 Layer 0 (2026-07-03) — default flipped false -> true.
+  # GrACE-Product §8 makes extraction-time exclusion the structural commitment:
+  # privileged content should not enter the graph by default; extracting
+  # privileged email is an explicit operator opt-in (set false deliberately).
+  skip_privileged_extraction: true
+corroboration:
+  config_path: config/corroboration_config.yaml

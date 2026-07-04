@@ -1,0 +1,47 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_kind": "segmented",
+      "name": "Three-segment org: Operations / Finance / Engineering",
+      "segment_count": 3,
+      "segments": [
+        {
+          "name": "Operations",
+          "description": "Day-to-day operations and supply chain.",
+          "representative_keywords": ["logistics", "vendor", "schedule"],
+          "representative_entities": ["Acme Inc"]
+        },
+        {
+          "name": "Finance",
+          "description": "Budget, accounting, and reporting.",
+          "representative_keywords": ["budget", "ledger", "forecast"],
+          "representative_entities": ["Beacon Capital"]
+        },
+        {
+          "name": "Engineering",
+          "description": "Product engineering and platform.",
+          "representative_keywords": ["release", "platform", "incident"],
+          "representative_entities": ["Helios Systems"]
+        }
+      ],
+      "agreement_summary": "Layer 2 clusters and Layer 3 communities both partition into three groups.",
+      "divergence_summary": "Layer 2 puts a few mixed-content memos in operations that Layer 3 places under finance.",
+      "confidence_band": "high",
+      "narrative_argument_for": "Filesystem hierarchy, embedding clusters, and entity co-occurrence all converge on three segments.",
+      "narrative_argument_against": "A few overlapping documents could be re-assigned with no change in modularity."
+    },
+    {
+      "hypothesis_kind": "null",
+      "name": "Null hypothesis: undifferentiated whole",
+      "narrative_argument_for": "If governance is centrally controlled, the partitioning may be cosmetic.",
+      "narrative_argument_against": "Three coherent communities and three filesystem branches argue against a single unit.",
+      "confidence_band": "low"
+    }
+  ],
+  "synthesis_metadata": {
+    "model": "qwen2.5:7b-instruct",
+    "low_stability_flag": false,
+    "layer3_mean_pairwise_ari": 0.92,
+    "generated_at": "2026-05-07T12:00:00+00:00"
+  }
+}

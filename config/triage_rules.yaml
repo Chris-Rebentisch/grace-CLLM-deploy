@@ -1,0 +1,43 @@
+tier1:
+  rule_order:
+  - duplicate_message_id
+  - auto_reply
+  - newsletter
+  - calendar_invite
+  - bounce
+  - system_notification
+  - empty_body
+  duplicate_message_id:
+    enabled: true
+  auto_reply:
+    enabled: true
+  newsletter:
+    enabled: true
+  calendar_invite:
+    enabled: true
+  bounce:
+    enabled: true
+  system_notification:
+    enabled: true
+    patterns:
+    - noreply@
+    - no-reply@
+    - mailer-daemon@
+    - postmaster@
+    - notifications@
+  empty_body:
+    enabled: true
+    min_chars_after_html_strip: 20
+tier2:
+  entity_types:
+  - Person
+  - Organization
+  - Legal_Entity
+tier3:
+  threshold: 0.3
+  batch_size: 100
+  flush_interval_seconds: 30
+tier4:
+  few_shot_fixture_dir: src/ingestion/communications/triage/tier4_fixtures
+  cost_budget_usd_per_run: 1.0
+  batch_size: 50

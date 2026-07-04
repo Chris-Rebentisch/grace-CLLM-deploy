@@ -1,0 +1,5 @@
+# Chunk 39 — realization snapshot pipeline operator knobs (D301/D303).
+velocity_window_days: 30
+stalled_epsilon: 0.005
+stalled_min_age_days: 7
+sample_id_cap: 10

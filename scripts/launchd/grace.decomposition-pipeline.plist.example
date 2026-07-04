@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.grace.decomposition-pipeline</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>-m</string>
+    <string>src.decomposition.pipeline</string>
+    <string>run</string>
+    <string>--archive-root</string>
+    <string>/Users/YOUR_USERNAME/grace/data/archive</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/YOUR_USERNAME/grace</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PYTHONPATH</key>
+    <string>/Users/YOUR_USERNAME/grace</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/tmp/grace-decomposition-pipeline.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/grace-decomposition-pipeline.err</string>
+</dict>
+</plist>

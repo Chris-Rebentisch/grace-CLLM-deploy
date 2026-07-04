@@ -1,0 +1,71 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_kind": "segmented",
+      "name": "Two-segment org: Front-of-house / Back-of-house",
+      "segment_count": 2,
+      "segments": [
+        {
+          "name": "Front-of-house",
+          "description": "Customer-facing operations.",
+          "representative_keywords": ["customer", "service", "ticket"],
+          "representative_entities": ["Atlas Retail"]
+        },
+        {
+          "name": "Back-of-house",
+          "description": "Supply, finance, and platform.",
+          "representative_keywords": ["finance", "vendor", "ops"],
+          "representative_entities": ["Atlas Logistics"]
+        }
+      ],
+      "agreement_summary": "Layer 2 weakly supports two clusters; Layer 3 modularity peaks near a 2-community partition.",
+      "divergence_summary": "Layer 1 folder shape suggests three branches; back-of-house may further split into ops vs finance.",
+      "confidence_band": "medium",
+      "narrative_argument_for": "Two clusters maximize modularity at the chosen Leiden seed.",
+      "narrative_argument_against": "ARI variance across seeds indicates the boundary is fragile."
+    },
+    {
+      "hypothesis_kind": "segmented",
+      "name": "Three-segment org: Customer / Finance / Operations",
+      "segment_count": 3,
+      "segments": [
+        {
+          "name": "Customer",
+          "description": "Customer service and storefront.",
+          "representative_keywords": ["customer", "ticket"],
+          "representative_entities": ["Atlas Retail"]
+        },
+        {
+          "name": "Finance",
+          "description": "Accounting and budgeting.",
+          "representative_keywords": ["ledger", "forecast"],
+          "representative_entities": ["Atlas Capital"]
+        },
+        {
+          "name": "Operations",
+          "description": "Supply chain and platform.",
+          "representative_keywords": ["vendor", "platform"],
+          "representative_entities": ["Atlas Logistics"]
+        }
+      ],
+      "agreement_summary": "Folder hierarchy clearly shows three top-level branches.",
+      "divergence_summary": "Embedding clustering does not separate customer from operations cleanly.",
+      "confidence_band": "medium",
+      "narrative_argument_for": "Filesystem provides strong prior for three groups.",
+      "narrative_argument_against": "Layer 2/3 evidence is too weak to discriminate this from the 2-segment view."
+    },
+    {
+      "hypothesis_kind": "null",
+      "name": "Null hypothesis: undifferentiated whole",
+      "narrative_argument_for": "Given seed-to-seed instability the data may not support any partition.",
+      "narrative_argument_against": "Folder shape is informative even if embeddings are ambiguous.",
+      "confidence_band": "medium"
+    }
+  ],
+  "synthesis_metadata": {
+    "model": "qwen2.5:7b-instruct",
+    "low_stability_flag": true,
+    "layer3_mean_pairwise_ari": 0.48,
+    "generated_at": "2026-05-07T12:00:00+00:00"
+  }
+}

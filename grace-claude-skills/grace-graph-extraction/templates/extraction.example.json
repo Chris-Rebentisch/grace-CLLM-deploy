@@ -1,0 +1,59 @@
+{
+  "_comment": "One document's worth of extracted graph. Claude emits entities by name; the helper resolves relationship endpoint names to grace_ids via /api/graph/entities/lookup after the entities are inserted. entity_type / relationship_type / property names MUST match the active ratified ontology (GET /api/ontology/active).",
+  "entities": [
+    {
+      "name": "Acme Holdings LLC",
+      "entity_type": "Legal_Entity",
+      "properties": {
+        "name": "Acme Holdings LLC",
+        "entity_form": "LLC",
+        "jurisdiction": "Delaware"
+      },
+      "confidence": 0.93,
+      "sensitivity_tags": ""
+    },
+    {
+      "name": "Acme Realty LLC",
+      "entity_type": "Legal_Entity",
+      "properties": {
+        "name": "Acme Realty LLC",
+        "entity_form": "LLC",
+        "jurisdiction": "Delaware"
+      },
+      "confidence": 0.9,
+      "sensitivity_tags": ""
+    },
+    {
+      "name": "Policy AB123",
+      "entity_type": "Insurance_Policy",
+      "properties": {
+        "name": "Policy AB123",
+        "policy_number": "AB123",
+        "effective_date": "2024-01-01",
+        "expiration_date": "2025-01-01"
+      },
+      "confidence": 0.88,
+      "sensitivity_tags": ""
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_type": "owns_interest_in",
+      "source_name": "Acme Holdings LLC",
+      "source_type": "Legal_Entity",
+      "target_name": "Acme Realty LLC",
+      "target_type": "Legal_Entity",
+      "properties": {"ownership_percentage": 60.0},
+      "confidence": 0.85
+    },
+    {
+      "relationship_type": "names_insured",
+      "source_name": "Policy AB123",
+      "source_type": "Insurance_Policy",
+      "target_name": "Acme Realty LLC",
+      "target_type": "Legal_Entity",
+      "properties": {},
+      "confidence": 0.8
+    }
+  ]
+}

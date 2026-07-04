@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "grace": {
+      "command": "/Users/YOUR_USERNAME/grace/.venv/bin/python",
+      "args": ["-m", "src.mcp_server"],
+      "cwd": "/Users/YOUR_USERNAME/grace",
+      "env": {
+        "MCP_GRACE_BASE_URL": "http://127.0.0.1:8000",
+        "MCP_TIMEOUT_SECONDS": "30",
+        "GRACE_AGENT_ID": "claude-desktop",
+        "GRACE_AGENT_DISPLAY_NAME": "Claude Desktop",
+        "GRACE_AGENT_SCOPE": "ontology_module:*:view,ontology_module:*:edit"
+      }
+    }
+  }
+}

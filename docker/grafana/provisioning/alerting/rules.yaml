@@ -1,0 +1,179 @@
+# Grafana Unified Alerting rules (Chunk 33, D249/D251/D253).
+#
+# Threshold rules carry severity=warning, for: 5m. Trend rules carry
+# severity=critical, for: 30m. PromQL queries include the D151 _init
+# filter (job="grace_init"). Every rule has annotations.runbook_url
+# pointing into docs/runbooks/<rule>.md.
+#
+# Threshold values marked TUNE-AFTER-FIRST-DEPLOYMENT.
+
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: grace-threshold
+    folder: GrACE
+    interval: 1m
+    rules:
+      - uid: mine-retention-drop
+        title: MINERetentionDrop
+        condition: A
+        for: 5m
+        annotations:
+          summary: "MINE retention ratio below floor"
+          description: "grace_mine_retention_ratio dipped below 0.7"
+          runbook_url: "docs/runbooks/mineretentiondrop.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'avg(grace_mine_retention_ratio{job="grace_init"}) < 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: unclassified-entity-rate-high
+        title: UnclassifiedEntityRateHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "Unclassified entity rate elevated"
+          description: "grace_extraction_validation_failures by kind exceeds 10/min"
+          runbook_url: "docs/runbooks/unclassifiedentityratehigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'sum(rate(grace_extraction_validation_failures{job="grace_init"}[5m])) > 10'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: retrieval-zero-results-spike
+        title: RetrievalZeroResultsSpike
+        condition: A
+        for: 5m
+        annotations:
+          summary: "Retrieval zero-results spike"
+          description: "grace_retrieval_zero_results rate has spiked"
+          runbook_url: "docs/runbooks/retrievalzeroresultsspike.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'sum(rate(grace_retrieval_zero_results{job="grace_init"}[5m])) > 5'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: corr-extraction-quality-problem-hi
+        title: CorrelationExtractionQualityProblemHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "extraction_quality_problem correlation strength high"
+          description: "Cross-module correlation exceeds 0.7"
+          runbook_url: "docs/runbooks/correlationextractionqualityproblemhigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'max(grace_correlation_extraction_quality_problem_strength{job="grace_init"}) > 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: correlation-graph-or-index-problem-high
+        title: CorrelationGraphOrIndexProblemHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "graph_or_index_problem correlation strength high"
+          description: "Cross-module correlation exceeds 0.7"
+          runbook_url: "docs/runbooks/correlationgraphorindexproblemhigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'max(grace_correlation_graph_or_index_problem_strength{job="grace_init"}) > 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: correlation-schema-drift-per-module-high
+        title: CorrelationSchemaDriftPerModuleHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "schema_drift_per_module correlation strength high"
+          description: "Cross-module correlation exceeds 0.7 for some module"
+          runbook_url: "docs/runbooks/correlationschemadriftpermodulehigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'max by (ontology_module) (grace_correlation_schema_drift_per_module_strength{job="grace_init"}) > 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: corr-cq-regression-pre-extraction-hi
+        title: CorrelationCQRegressionPreExtractionHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "cq_regression_pre_extraction correlation strength high"
+          description: "Cross-module correlation exceeds 0.7 for some module"
+          runbook_url: "docs/runbooks/correlationcqregressionpreextractionhigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'max by (ontology_module) (grace_correlation_cq_regression_pre_extraction_strength{job="grace_init"}) > 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+      - uid: corr-relationship-gap-propagation-hi
+        title: CorrelationRelationshipGapPropagationHigh
+        condition: A
+        for: 5m
+        annotations:
+          summary: "relationship_gap_propagation correlation strength high"
+          description: "Cross-module correlation exceeds 0.7 for some module"
+          runbook_url: "docs/runbooks/correlationrelationshipgappropagationhigh.md"
+        labels:
+          severity: warning
+        data:
+          - refId: A
+            datasourceUid: PROMETHEUS
+            relativeTimeRange: { from: 600, to: 0 }
+            model:
+              expr: 'max by (ontology_module) (grace_correlation_relationship_gap_propagation_strength{job="grace_init"}) > 0.7'  # TUNE-AFTER-FIRST-DEPLOYMENT
+
+  - orgId: 1
+    name: grace-trend
+    folder: GrACE
+    interval: 5m
+    rules:
+      - uid: correlation-strength-sustained-high
+        title: CorrelationStrengthSustainedHigh
+        condition: A
+        for: 30m
+        annotations:
+          summary: "Sustained high correlation strength in diagnostic_records"
+          description: "Avg correlation_strength over recent diagnostic_records exceeds 0.8"
+          runbook_url: "docs/runbooks/correlationstrengthsustainedhigh.md"
+        labels:
+          severity: critical
+        data:
+          - refId: A
+            datasourceUid: GRACE_POSTGRES
+            relativeTimeRange: { from: 1800, to: 0 }
+            model:
+              # Read-only against grace_readonly role (D167).
+              rawSql: |
+                SELECT avg(correlation_strength) AS value
+                FROM diagnostic_records
+                WHERE detected_at > now() - INTERVAL '30 minutes'
+              format: table

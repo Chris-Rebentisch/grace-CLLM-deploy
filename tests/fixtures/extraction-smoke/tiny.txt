@@ -1,0 +1,4 @@
+GrACE extraction smoke test fixture. This is a minimal plaintext document
+used by the smoke-live-server.sh harness to verify that the extraction job
+spawn endpoint accepts a valid source path and returns a 202 response with
+a job_id, status, and pid. The content is intentionally trivial.

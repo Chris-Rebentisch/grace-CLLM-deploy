@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Example launchd plist for the GrACE DeepEval regression suite (Chunk 34).
+
+  Operational model (D246 mirror): the eval suite is CLI-only. APScheduler
+  / FastAPI lifespan integration is intentionally omitted. Operators
+  schedule the CLI via host cron / launchd.
+
+  Install (per-user):
+    1. Copy this file to ~/Library/LaunchAgents/com.grace.eval-suite.plist
+    2. Edit the placeholders:
+       - GRACE_HOME       -> REPLACE THIS: absolute path to your grace checkout
+       - PYTHON_BIN       -> REPLACE THIS: absolute path to the Python you used to
+                             install deepeval (run `python3 -m pip -V` and use
+                             the bin directory it reports)
+    3. Load it:           launchctl load ~/Library/LaunchAgents/com.grace.eval-suite.plist
+    4. Verify:            launchctl list | grep com.grace.eval-suite
+
+  Schedule below runs once weekly on Mondays at 04:00 local time. The
+  CLI exits 0 on success, 1 on partial failure (warn floor breached but
+  fail floor held), 2 on hard error / fail floor breached. launchd
+  records these in the system log; surface the run via the
+  ``GrACE Eval Quality`` Grafana dashboard (uid: grace-eval-quality).
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.grace.eval-suite</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/PYTHON_BIN</string>
+        <string>-m</string>
+        <string>src.eval</string>
+        <string>run-suite</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/GRACE_HOME</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/GRACE_HOME</string>
+    </dict>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>4</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/GRACE_HOME/.build-state/grace-eval-suite.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/GRACE_HOME/.build-state/grace-eval-suite.stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

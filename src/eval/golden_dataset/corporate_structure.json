@@ -1,0 +1,122 @@
+[
+  {
+    "case_id": "corporate_structure-001",
+    "query_text": "What is the parent legal entity of Acme Group?",
+    "expected_output": "Acme Group is the top-level holding entity in the corporate structure; it has no parent. Its subsidiaries include the operating LLCs documented in the contractor and acquisition records.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Entry-level identity lookup; expect single-vertex graph hit."
+  },
+  {
+    "case_id": "corporate_structure-002",
+    "query_text": "List the subsidiaries directly owned by the holding company.",
+    "expected_output": "The directly owned subsidiaries are the LLCs identified in the contractor directory and acquisition memos: each is wholly owned and reports to the holding company on a quarterly cadence.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "simple",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "One-hop ownership traversal."
+  },
+  {
+    "case_id": "corporate_structure-003",
+    "query_text": "Which officers serve on the board of the holding entity and what are their roles?",
+    "expected_output": "The board comprises the chairman, the CEO, the CFO, and two independent directors. Each role is documented in the email correspondence to the chairman and the acquisition strategy memo.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_email-response-to-board-chairman-comments.md"
+    ],
+    "notes": "Multi-hop: entity -> role -> person."
+  },
+  {
+    "case_id": "corporate_structure-004",
+    "query_text": "How are voting rights distributed across the LLC operating agreements?",
+    "expected_output": "Voting rights follow capital contribution proportionally. Members holding more than ten percent of capital have a seat on the operating committee; minor members vote by unanimous-consent provisions for major decisions only.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Multi-hop semantic; resolution requires merging operating agreement clauses."
+  },
+  {
+    "case_id": "corporate_structure-005",
+    "query_text": "How many distinct legal entities exist in the corporate structure?",
+    "expected_output": "There are seven distinct legal entities: one holding company and six operating subsidiaries, including the construction LLC, the real-estate holdings LLC, and the marine-asset LLC.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Aggregate count over Legal_Entity vertices."
+  },
+  {
+    "case_id": "corporate_structure-006",
+    "query_text": "Summarize the acquisition strategy for the small-business pipeline.",
+    "expected_output": "The strategy targets owner-operated small businesses with stable cash flow and acquires them at three to five times EBITDA, financing via SBA-backed loans and seller carrybacks. Post-acquisition, operations are folded into the existing holding structure with retained-management transition periods.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "semantic",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Semantic summary; expect dense-retrieval dominance."
+  },
+  {
+    "case_id": "corporate_structure-007",
+    "query_text": "Identify which entities own real estate versus operating businesses.",
+    "expected_output": "Real-estate ownership is consolidated under the real-estate holdings LLC, including the Cedar Cay development land. Operating businesses (construction, marine, food) are held under separate operating LLCs to isolate liability.",
+    "expected_retrieval_path": "fused",
+    "query_complexity": "multi_hop",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Cross-module: corporate_structure x real_estate."
+  },
+  {
+    "case_id": "corporate_structure-008",
+    "query_text": "What is the registered state for the holding company?",
+    "expected_output": "The holding company is registered in Delaware, consistent with the operating preference for Delaware General Corporation Law in the acquisition memo.",
+    "expected_retrieval_path": "keyword",
+    "query_complexity": "simple",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260316_conversation_small-business-acquisition-and-scaling-strategy.md"
+    ],
+    "notes": "Keyword lookup on registration jurisdiction."
+  },
+  {
+    "case_id": "corporate_structure-009",
+    "query_text": "How does the chairman interact with operating-entity managers based on the email correspondence?",
+    "expected_output": "The chairman issues directives to operating-entity managers through formal memos, copying the holding-company CEO. Managers respond directly to operational items and escalate strategic items to the board through the CEO.",
+    "expected_retrieval_path": "semantic",
+    "query_complexity": "multi_hop",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/business/20260310_conversation_email-response-to-board-chairman-comments.md"
+    ],
+    "notes": "Multi-hop role/communication mapping."
+  },
+  {
+    "case_id": "corporate_structure-010",
+    "query_text": "What is the average officer count across operating subsidiaries?",
+    "expected_output": "Operating subsidiaries average three officers each: a managing member, a controller, and an operations lead. The construction and real-estate LLCs each carry an additional safety officer per regulatory requirement.",
+    "expected_retrieval_path": "graph",
+    "query_complexity": "aggregate",
+    "ontology_module": "corporate_structure",
+    "source_documents": [
+      "data/discovery-sample/construction/Contractor Directory.docx"
+    ],
+    "notes": "Aggregate average across subsidiaries."
+  }
+]

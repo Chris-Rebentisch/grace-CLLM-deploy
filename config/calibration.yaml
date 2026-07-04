@@ -1,0 +1,7 @@
+# Earned Autonomy Calibration — operator knobs (Chunk 49, D394–D396).
+band_width: 0.10
+default_window_size: 50
+min_reviews_for_calibration: 50
+regression_sensitivity: 0.10
+sparse_band_floor: 5
+mann_kendall_min_snapshots: 8

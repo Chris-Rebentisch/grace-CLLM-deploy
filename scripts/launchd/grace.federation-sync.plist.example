@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Placeholder for future Chunk 53 federation sync pipeline.
+     No active job configuration — structure only. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.grace.federation-sync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/opt/python@3.14/bin/python3.14</string>
+        <string>-m</string>
+        <string>src.federation.sync_pipeline</string>
+        <string>run</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/YOUR_USERNAME/grace</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONPATH</key>
+        <string>/Users/YOUR_USERNAME/grace</string>
+    </dict>
+
+    <key>Disabled</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/grace-federation-sync-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/grace-federation-sync-stderr.log</string>
+</dict>
+</plist>

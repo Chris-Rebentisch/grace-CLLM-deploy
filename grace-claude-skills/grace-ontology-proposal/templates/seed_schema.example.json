@@ -1,0 +1,98 @@
+{
+  "entity_types": [
+    {
+      "name": "Legal_Entity",
+      "alternative_names": ["Company", "Organization"],
+      "parent_type": null,
+      "description": "A company, trust, partnership, or other entity with legal personhood.",
+      "display_label": "Legal Entity",
+      "plain_description": "A business or legal body that can own assets and enter agreements.",
+      "example_snippet": "Acme Holdings LLC, a Delaware limited liability company",
+      "domain": "corporate_structure",
+      "properties": [
+        {"name": "legal_name", "data_type": "string", "description": "Registered legal name", "required": true, "answerable_cqs": []},
+        {"name": "entity_form", "data_type": "string", "description": "LLC, trust, corp, partnership", "required": false, "answerable_cqs": []},
+        {"name": "jurisdiction", "data_type": "string", "description": "State/country of formation", "required": false, "answerable_cqs": []}
+      ],
+      "provenance": "seed_aligned",
+      "confidence": 0.9,
+      "source_passes": ["claude_combined"],
+      "seed_source": "fibo",
+      "seed_type_name": "LegalPerson",
+      "seed_alignment": "Aligned to FIBO LegalPerson; entity_form covers Corporation/Trust/Partnership/LLC subclasses.",
+      "answerable_cqs": [],
+      "evidence_document_count": 4
+    },
+    {
+      "name": "Insurance_Policy",
+      "alternative_names": ["Policy"],
+      "parent_type": null,
+      "description": "An insurance contract covering one or more insured parties or assets.",
+      "display_label": "Insurance Policy",
+      "plain_description": "A policy document that insures people, property, or liability.",
+      "example_snippet": "Policy AB123, effective 2024-01-01",
+      "domain": "insurance",
+      "properties": [
+        {"name": "policy_number", "data_type": "string", "description": "Carrier policy identifier", "required": true, "answerable_cqs": []},
+        {"name": "effective_date", "data_type": "datetime", "description": "Coverage start", "required": false, "answerable_cqs": []},
+        {"name": "expiration_date", "data_type": "datetime", "description": "Coverage end", "required": false, "answerable_cqs": []}
+      ],
+      "provenance": "claude_authored",
+      "confidence": 0.85,
+      "source_passes": ["claude_combined"],
+      "seed_source": null,
+      "seed_type_name": null,
+      "answerable_cqs": [],
+      "evidence_document_count": 2
+    }
+  ],
+  "relationships": [
+    {
+      "name": "owns_interest_in",
+      "alternative_names": ["owns"],
+      "source_type": "Legal_Entity",
+      "target_type": "Legal_Entity",
+      "description": "A parent entity holds an ownership interest in a subsidiary.",
+      "display_label": "owns interest in",
+      "plain_description": "One company owns part or all of another.",
+      "example_snippet": "Acme Holdings owns 60% of Acme Realty",
+      "richness_tier": "attributed",
+      "richness_rationale": "Carries an ownership_percentage property, so it is attributed, not a simple edge.",
+      "edge_properties": [
+        {"name": "ownership_percentage", "data_type": "float", "description": "Percent owned", "required": false, "answerable_cqs": []}
+      ],
+      "provenance": "claude_authored",
+      "confidence": 0.85,
+      "source_passes": ["claude_combined"],
+      "seed_source": null,
+      "seed_rel_name": null,
+      "answerable_cqs": []
+    },
+    {
+      "name": "names_insured",
+      "alternative_names": [],
+      "source_type": "Insurance_Policy",
+      "target_type": "Legal_Entity",
+      "description": "A policy names a legal entity as an insured party.",
+      "display_label": "names insured",
+      "plain_description": "Links a policy to the entity it protects.",
+      "example_snippet": "Policy AB123 names Acme Realty as insured",
+      "richness_tier": "simple",
+      "richness_rationale": "No edge attributes needed beyond the link itself.",
+      "edge_properties": [],
+      "provenance": "claude_authored",
+      "confidence": 0.8,
+      "source_passes": ["claude_combined"],
+      "seed_source": null,
+      "seed_rel_name": null,
+      "answerable_cqs": []
+    }
+  ],
+  "coverage_matrix": [],
+  "provenance_summary": {"claude_authored": 2},
+  "quality_metrics": {},
+  "gap_report": {},
+  "extraction_run_id": "claude-authored",
+  "industry_profile": "general",
+  "created_at": "2026-06-10T00:00:00Z"
+}
