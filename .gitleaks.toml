@@ -1,0 +1,24 @@
+# Gitleaks config for the Secret Scan workflow (.github/workflows/secret-scan.yml).
+# gitleaks-action v2 automatically uses a repo-root .gitleaks.toml.
+#
+# Extends the default ruleset and allowlists ONLY the repo's known fake
+# credentials: hardcoded test fixtures and the documented localhost-only
+# ArcadeDB dev default. Patterns are exact-shaped so a real key pasted into
+# a test or doc is still caught.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Known fake credentials: test fixtures + documented localhost dev default"
+regexTarget = "line"
+regexes = [
+    # test fixtures used across tests/api and tests/shared
+    '''sk-test-[0-9a-zA-Z-]+''',
+    '''sk-ant-test[0-9a-zA-Z-]*''',
+    '''test-key-abc123''',
+    '''test-idem-key-[0-9]+''',
+    # ArcadeDB localhost dev default (documented in INSTALL/runbooks; the
+    # server logs arcade_default_credentials_in_use when active)
+    '''root:gracedev''',
+]
